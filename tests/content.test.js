@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {themes,questions} from '../src/data.js';
+test('Six unique themes, 36 vocabulary items and valid quiz answers',()=>{assert.equal(themes.length,6);assert.equal(new Set(themes.map(t=>t.id)).size,6);assert.equal(themes.flatMap(t=>t.words).length,36);for(const t of themes){for(const q of questions(t)){assert.equal(q.options.length,4);assert.equal(new Set(q.options).size,4);assert.ok(q.options.includes(q.answer))}}});
+test('Each simulation has complete prompts and two valid practice responses',()=>{for(const t of themes){assert.equal(t.dialog.length,3);for(const d of t.dialog){assert.ok(d[0]&&d[1]);assert.equal(d[2].length,2);for(const r of d[2])assert.ok(r[0]&&r[1])}}});
