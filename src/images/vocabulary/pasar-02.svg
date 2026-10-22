@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 155" role="img" aria-label="Ilustrasi Penjual">
+ <rect width="220" height="155" rx="21" fill="#e7f6ff"/>
+ <circle cx="167" cy="49" r="46" fill="#b9e3ff" opacity=".67"/>
+ <circle cx="42" cy="116" r="32" fill="#b9e3ff" opacity=".48"/>
+ <path d="M21 27l7 0M24 23l0 8M188 109l8 0M192 105l0 8" stroke="#4c91bc" stroke-width="3" stroke-linecap="round" opacity=".58"/>
+ <ellipse cx="110" cy="130" rx="45" ry="8" fill="#4c91bc" opacity=".14"/>
+<g transform="translate(23 10)">
+ <rect x="20" y="60" width="139" height="62" rx="8" fill="#ce815c"/><rect x="27" y="78" width="125" height="29" rx="4" fill="#f0b38b"/>
+ <path d="M23 22H155L163 55H15Z" fill="#ea8067"/><path d="M44 22h28l3 33H37Zm57 0h28l9 33h-31Z" fill="#fff2e4"/>
+ <circle cx="90" cy="70" r="19" fill="#f2be99"/><path d="M72 67q17-28 35-2V56Q90 35 75 49Z" fill="#534b42"/>
+ <path d="M62 115q3-29 27-29t28 29" fill="#5397ac"/>
+ <circle cx="83" cy="70" r="2" fill="#343b3b"/><circle cx="97" cy="70" r="2" fill="#343b3b"/><path d="M84 79q7 6 13 0" fill="none" stroke="#915c4c" stroke-width="2" stroke-linecap="round"/>
+ <rect x="29" y="85" width="25" height="19" rx="3" fill="#86b75e"/><circle cx="36" cy="84" r="7" fill="#eeab3e"/><circle cx="44" cy="84" r="7" fill="#dc5b48"/>
+ </g>
+ </svg>

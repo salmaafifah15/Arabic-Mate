@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 155" role="img" aria-label="Ilustrasi Meja belajar">
+ <rect width="220" height="155" rx="21" fill="#fff0e3"/>
+ <circle cx="167" cy="49" r="46" fill="#ffbe91" opacity=".67"/>
+ <circle cx="42" cy="116" r="32" fill="#ffbe91" opacity=".48"/>
+ <path d="M21 27l7 0M24 23l0 8M188 109l8 0M192 105l0 8" stroke="#cf775b" stroke-width="3" stroke-linecap="round" opacity=".58"/>
+ <ellipse cx="110" cy="130" rx="45" ry="8" fill="#cf775b" opacity=".14"/>
+<g transform="translate(29 10)">
+ <rect x="18" y="49" width="132" height="16" rx="5" fill="#bf8058"/><path d="M29 65v52m111-52v52" stroke="#81604e" stroke-width="10" stroke-linecap="round"/>
+ <rect x="33" y="33" width="66" height="13" rx="3" fill="#87bfc4"/><rect x="38" y="24" width="55" height="10" rx="2" fill="#e9e0c4"/>
+ <rect x="113" y="17" width="21" height="32" rx="4" fill="#e6b76e"/><path d="M119 21v-12m6 11V6m5 18V13" stroke="#5e918e" stroke-width="3" stroke-linecap="round"/>
+ </g>
+ </svg>

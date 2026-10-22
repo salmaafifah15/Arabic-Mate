@@ -1,58 +1,50 @@
-# Arabic Mate
+# Arabic Mate, versi revisi kosakata dan percakapan
 
-Website pembelajaran bahasa Arab fusha tingkat pemula, tanpa database atau API berbayar. Palet: #FFBE91, #FFDDB0, #FFFCE1, #CFEBFF.
+Media belajar bahasa Arab fusha tingkat pemula tanpa backend atau database. Tampilan memakai palet pastel. Materi ditampilkan dalam enam tema.
 
-## Menjalankan
+## Perubahan utama
 
-Gunakan Node.js 20 atau lebih baru. Tidak ada dependensi eksternal.
+- **72 kosakata**, masing-masing **12 kata per tema**. Setiap kosakata memiliki ilustrasi SVG yang disimpan **secara lokal**, kata Arab berharakat, transliterasi, arti bahasa Indonesia, audio pelafalan (jika suara Arab tersedia), dan tombol penanda progres.
+- **36 giliran percakapan**, masing-masing **6 giliran per tema**. Siswa merespons dengan **ketikan bahasa Arab**, **rekaman suara**, atau keduanya. Tidak lagi wajib memilih salah satu opsi balasan. Terdapat dua contoh balasan untuk setiap giliran, yang bisa dibuka jika memerlukan bantuan.
+- **Dikte Arab** (opsional) untuk mengubah ucapan menjadi ketikan pada browser yang mendukung `SpeechRecognition`.
+- Rekaman suara bisa didengarkan sebelum dikirim, dihapus, serta diputar kembali di riwayat percakapan **selama halaman aktif**. Rekaman tidak diunggah ke server, tidak termasuk berkas ekspor progres, dan hilang ketika halaman ditutup atau di-refresh. Dikte dapat menggunakan layanan penyedia browser.
+- Flashcard menggunakan ilustrasi yang sama. Kuis bertambah menjadi 12 soal per tema, menyesuaikan seluruh kosakata.
+- Penyimpanan progres lama (`arabicmate:v1`) dan berkas ekspor JSON versi 1 tetap didukung. Kata awal mempertahankan indeks sebelumnya.
+
+## Cara menjalankan
+
+Diperlukan Node.js minimal versi 20, tanpa instalasi dependensi tambahan.
 
 ```sh
 npm run dev
 ```
 
-Buka http://localhost:3000. Untuk verifikasi dan build:
+Buka **http://localhost:3000**. Untuk verifikasi dan build:
 
 ```sh
 npm test
 npm run build
 ```
 
-`dist/` adalah hasil website statis. `npm run dev` adalah server pengembangan, bukan server produksi.
+Build menyiapkan `dist/` sebagai situs statis dan memperbarui **`ArabicMate-Preview.html`** sebagai pratinjau satu berkas dengan gambar tersemat. Pratinjau ini bisa dibuka secara langsung untuk melihat desain, tetapi **uji rekaman suara sebaiknya memakai `localhost` atau situs HTTPS** agar browser dapat mengizinkan mikrofon.
 
-## GitHub dan Vercel
+## Mengunggah ke GitHub dan Vercel
 
-1. Ekstrak ZIP. Unggah **isi folder arabicmate** (termasuk package.json, index.html, src, scripts, dan vercel.json) ke root repositori GitHub baru. Jangan unggah ZIP sebagai satu-satunya file repositori.
-2. Pada Vercel, impor repositori tersebut.
-3. Framework Preset: Other. Build Command: `npm run build`. Output Directory: `dist`. Install Command dapat dikosongkan. Tidak ada environment variable yang diperlukan.
-4. Deploy. Perubahan kode pada branch produksi yang terhubung dapat memicu deployment berikutnya.
+Unggah isi folder proyek (termasuk `package.json`, `index.html`, `src/`, `scripts/`, dan `vercel.json`) ke root repositori. Di Vercel pilih Framework Preset **Other**, Build Command `npm run build`, Output Directory **`dist`**. Tidak diperlukan environment variable. Jika folder proyek berada di subfolder repositori, set Root Directory ke subfolder tersebut.
 
-Jika folder arabicmate dimasukkan sebagai subfolder repositori, pilih folder itu sebagai Root Directory pada Vercel.
+## Batasan dan privasi
 
-## Fitur
+- Percakapan adalah **latihan terbuka berbasis skenario**, bukan AI interaktif. Ketikan dan rekaman siswa **tidak diperiksa otomatis**. Setelah siswa mengirim balasan, skenario berpindah ke giliran berikutnya. Guru perlu menilai pelafalan serta ketepatan jawaban bila digunakan sebagai tugas penilaian.
+- Rekaman memerlukan izin mikrofon. API perekaman tidak tersedia pada semua browser atau akses non-HTTPS. Fitur dikte lebih terbatas lagi karena dukungan browser dan bahasa Arab berbeda menurut perangkat. Keduanya opsional: ketikan tetap tersedia.
+- Progres kata, status penyelesaian dialog, dan hasil kuis disimpan lokal pada browser. Tidak ada akun, sinkronisasi, atau penyimpanan audio permanen.
+- Ilustrasi menggunakan file SVG lokal yang berisi pictogram emoji sesuai kata. Tampilan ikon emoji bisa sedikit berbeda antar sistem operasi. Gambar tidak mengambil aset eksternal.
+- Contoh kalimat ditujukan bagi pembelajar pemula dan sebaiknya diperiksa ulang oleh pengajar bahasa Arab sebelum pemakaian sebagai materi resmi; beberapa sapaan menggunakan bentuk maskulin tunggal.
 
-- Enam tema, 36 kosakata berharakat dan transliterasi.
-- Pencarian dan filter tema berdasarkan progres.
-- Tandai kata yang sudah dipelajari; flashcard dua sisi.
-- Enam simulasi dialog, masing-masing tiga giliran, dengan dua pilihan balasan.
-- Enam kuis, masing-masing enam soal, dengan skor dan pembahasan.
-- Dashboard dan riwayat kuis lokal; ekspor/impor JSON yang divalidasi; reset dengan konfirmasi.
-- Audio Web Speech API hanya bila perangkat menyediakan suara bahasa Arab.
-- Tata letak responsif, RTL pada teks Arab, focus keyboard, reduced motion.
+## Struktur
 
-## Batasan yang disengaja
-
-Ini aplikasi statis interaktif, **belum full stack**: tidak ada backend produksi, akun, database, atau AI. Dialog tidak menilai input bebas. Kedua pilihan balasan merupakan latihan valid; respons berikutnya tetap mengikuti skenario. Kuis saat ini menguji arti kosakata, belum pemahaman dialog. Ilustrasi menggunakan emoji perangkat dan elemen CSS, bukan animasi karakter khusus. Progres dapat hilang jika data browser dihapus; gunakan ekspor cadangan. Nilai bukan untuk ujian resmi. Materi awal perlu ditinjau pengajar Arab sebelum penggunaan formal; beberapa dialog menggunakan sapaan maskulin tunggal.
-
-## Struktur dan pengembangan
-
-- `src/data.js`: sumber materi bertema dan generator soal dengan ID tetap.
-- `src/app.js`: router hash, interaksi, penilaian, penyimpanan lokal dan transfer progres.
-- `src/style.css`: token warna dan tampilan responsif.
-- `scripts/`: server pengembangan dan build statis.
-- `tests/`: validasi konsistensi materi dan soal.
-
-Untuk pengembangan full stack, pisahkan penyimpanan dari UI menjadi adapter, lalu hubungkan autentikasi dan penyimpanan progres per pengguna; aktifkan pembatasan akses data pada server. Tambahkan endpoint server untuk AI dengan kunci API rahasia, pembatasan penggunaan, dan validasi input. Jangan meletakkan API key pada JavaScript browser. Versi ini sengaja tidak menyertakan endpoint atau login semu.
-
-## Verifikasi
-
-Tes konten dan pemeriksaan sintaks JavaScript dapat dijalankan lokal. Pemeriksaan ini tidak menggantikan pengujian browser, perangkat seluler, ketersediaan audio, serta review linguistik oleh pengajar.
+- `src/data.js`: kosakata, rujukan ilustrasi, dialog, dan generator kuis.
+- `src/images/vocabulary/`: 72 ilustrasi kosakata dalam SVG.
+- `src/app.js`: tampilan, interaksi latihan teks dan suara, progres, dan router.
+- `src/style.css`: desain responsif.
+- `scripts/build-preview.mjs`: membuat pratinjau HTML mandiri dengan gambar yang disematkan.
+- `tests/content.test.js`: validasi materi, gambar, dan soal.
