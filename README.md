@@ -44,6 +44,7 @@ Unggah isi folder proyek (termasuk `package.json`, `index.html`, `src/`, `script
 
 - `src/data.js`: kosakata, rujukan ilustrasi, dialog, dan generator kuis.
 - `src/images/vocabulary/`: 72 ilustrasi kosakata dalam SVG.
+- `src/images/scenes/`: 6 ilustrasi latar percakapan (pasar, bandara, warung, taman, rumah, kelas). Dibuat ulang lewat `node scripts/make-scenes.mjs`.
 - `src/app.js`: tampilan, interaksi latihan teks dan suara, progres, dan router.
 - `src/style.css`: desain responsif.
 - `scripts/build-preview.mjs`: membuat pratinjau HTML mandiri dengan gambar yang disematkan.
