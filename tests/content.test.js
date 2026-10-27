@@ -41,3 +41,10 @@ test('Kuis 12 soal per tema memiliki empat pilihan unik dan satu jawaban',()=>{
     }
   }
 });
+
+test('Tiap tema punya ilustrasi latar percakapan lokal',()=>{
+  for(const t of themes){
+    assert.match(t.scene,/^\/src\/images\/scenes\/[a-z0-9-]+\.svg$/);
+    assert.ok(existsSync(new URL('..'+t.scene,import.meta.url)),`Scene hilang: ${t.scene}`);
+  }
+});
