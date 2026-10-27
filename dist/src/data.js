@@ -1,6 +1,7 @@
 export const themes = [
   {
     "id": "pasar",
+    "scene": "/src/images/scenes/pasar.svg",
     "title": "Jual Beli",
     "arabic": "فِي السُّوقِ",
     "icon": "🛍️",
@@ -171,6 +172,7 @@ export const themes = [
   },
   {
     "id": "perjalanan",
+    "scene": "/src/images/scenes/perjalanan.svg",
     "title": "Perjalanan",
     "arabic": "الرِّحْلَةُ",
     "icon": "✈️",
@@ -341,6 +343,7 @@ export const themes = [
   },
   {
     "id": "makanan",
+    "scene": "/src/images/scenes/makanan.svg",
     "title": "Makanan & Minuman",
     "arabic": "الطَّعَامُ وَالشَّرَابُ",
     "icon": "🍲",
@@ -511,6 +514,7 @@ export const themes = [
   },
   {
     "id": "hobi",
+    "scene": "/src/images/scenes/hobi.svg",
     "title": "Hobi",
     "arabic": "الْهِوَايَةُ",
     "icon": "🎨",
@@ -681,6 +685,7 @@ export const themes = [
   },
   {
     "id": "keluarga",
+    "scene": "/src/images/scenes/keluarga.svg",
     "title": "Keluarga",
     "arabic": "الْأُسْرَةُ",
     "icon": "🏡",
@@ -851,6 +856,7 @@ export const themes = [
   },
   {
     "id": "sekolah",
+    "scene": "/src/images/scenes/sekolah.svg",
     "title": "Sekolah",
     "arabic": "الْمَدْرَسَةُ",
     "icon": "📚",
