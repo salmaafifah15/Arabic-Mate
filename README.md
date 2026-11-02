@@ -4,11 +4,11 @@ Media belajar bahasa Arab fusha tingkat pemula tanpa backend atau database. Tamp
 
 ## Perubahan utama
 
-- **120 kosakata**, masing-masing **20 kata per tema**. Setiap kosakata memiliki ilustrasi SVG yang disimpan **secara lokal**, kata Arab berharakat, transliterasi, arti bahasa Indonesia, audio pelafalan (jika suara Arab tersedia), dan tombol penanda progres.
-- **54 giliran percakapan**, masing-masing **9 giliran per tema**. Siswa merespons dengan **ketikan bahasa Arab**, **rekaman suara**, atau keduanya. Tidak lagi wajib memilih salah satu opsi balasan. Terdapat dua contoh balasan untuk setiap giliran, yang bisa dibuka jika memerlukan bantuan.
+- **168 kosakata**, masing-masing **28 kata per tema**. Setiap kosakata memiliki ilustrasi SVG yang disimpan **secara lokal**, kata Arab berharakat, transliterasi, arti bahasa Indonesia, audio pelafalan (jika suara Arab tersedia), dan tombol penanda progres.
+- **72 giliran percakapan**, masing-masing **12 giliran per tema**. Siswa merespons dengan **ketikan bahasa Arab**, **rekaman suara**, atau keduanya. Tidak lagi wajib memilih salah satu opsi balasan. Terdapat dua contoh balasan untuk setiap giliran, yang bisa dibuka jika memerlukan bantuan.
 - **Dikte Arab** (opsional) untuk mengubah ucapan menjadi ketikan pada browser yang mendukung `SpeechRecognition`.
 - Rekaman suara bisa didengarkan sebelum dikirim, dihapus, serta diputar kembali di riwayat percakapan **selama halaman aktif**. Rekaman tidak diunggah ke server, tidak termasuk berkas ekspor progres, dan hilang ketika halaman ditutup atau di-refresh. Dikte dapat menggunakan layanan penyedia browser.
-- Flashcard menggunakan ilustrasi yang sama. Kuis bertambah menjadi 20 soal per tema, menyesuaikan seluruh kosakata.
+- Flashcard menggunakan ilustrasi yang sama. Kuis bertambah menjadi 28 soal per tema, menyesuaikan seluruh kosakata.
 - Penyimpanan progres lama (`arabicmate:v1`) dan berkas ekspor JSON versi 1 tetap didukung. Kata awal mempertahankan indeks sebelumnya.
 
 ## Cara menjalankan
@@ -43,7 +43,7 @@ Unggah isi folder proyek (termasuk `package.json`, `index.html`, `src/`, `script
 ## Struktur
 
 - `src/data.js`: kosakata, rujukan ilustrasi, dialog, dan generator kuis.
-- `src/images/vocabulary/`: 120 ilustrasi kosakata dalam SVG.
+- `src/images/vocabulary/`: 168 ilustrasi kosakata dalam SVG.
 - `src/images/scenes/`: 6 ilustrasi latar percakapan (pasar, bandara, warung, taman, rumah, kelas). Dibuat ulang lewat `node scripts/make-scenes.mjs`.
 - `src/app.js`: tampilan, interaksi latihan teks dan suara, progres, dan router.
 - `src/style.css`: desain responsif.
