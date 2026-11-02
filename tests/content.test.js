@@ -3,13 +3,13 @@ import assert from 'node:assert/strict';
 import {existsSync} from 'node:fs';
 import {themes,questions} from '../src/data.js';
 
-test('Enam tema, 72 kosakata bergambar, tautan ilustrasi lokal valid',()=>{
+test('Enam tema, 120 kosakata bergambar, tautan ilustrasi lokal valid',()=>{
   assert.equal(themes.length,6);
   assert.equal(new Set(themes.map(t=>t.id)).size,6);
-  assert.equal(themes.flatMap(t=>t.words).length,72);
+  assert.equal(themes.flatMap(t=>t.words).length,120);
   for(const theme of themes){
-    assert.equal(theme.words.length,12);
-    assert.equal(new Set(theme.words.map(w=>w[2])).size,12);
+    assert.equal(theme.words.length,20);
+    assert.equal(new Set(theme.words.map(w=>w[2])).size,20);
     for(const word of theme.words){
       assert.equal(word.length,4);
       assert.ok(word[0]&&word[1]&&word[2]);
@@ -19,9 +19,9 @@ test('Enam tema, 72 kosakata bergambar, tautan ilustrasi lokal valid',()=>{
   }
 });
 
-test('36 giliran percakapan menyediakan dua contoh balasan, input siswa tidak dipaksa memilih',()=>{
+test('54 giliran percakapan menyediakan dua contoh balasan, input siswa tidak dipaksa memilih',()=>{
   for(const t of themes){
-    assert.equal(t.dialog.length,6);
+    assert.equal(t.dialog.length,9);
     for(const d of t.dialog){
       assert.ok(d[0]&&d[1]);
       assert.equal(d[2].length,2);
@@ -30,10 +30,10 @@ test('36 giliran percakapan menyediakan dua contoh balasan, input siswa tidak di
   }
 });
 
-test('Kuis 12 soal per tema memiliki empat pilihan unik dan satu jawaban',()=>{
+test('Kuis 20 soal per tema memiliki empat pilihan unik dan satu jawaban',()=>{
   for(const t of themes){
     const qs=questions(t);
-    assert.equal(qs.length,12);
+    assert.equal(qs.length,20);
     for(const q of qs){
       assert.equal(q.options.length,4);
       assert.equal(new Set(q.options).size,4);
