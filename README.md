@@ -32,6 +32,12 @@ Build menyiapkan `dist/` sebagai situs statis dan memperbarui **`ArabicMate-Prev
 
 Unggah isi folder proyek (termasuk `package.json`, `index.html`, `src/`, `scripts/`, dan `vercel.json`) ke root repositori. Di Vercel pilih Framework Preset **Other**, Build Command `npm run build`, Output Directory **`dist`**. Tidak diperlukan environment variable. Jika folder proyek berada di subfolder repositori, set Root Directory ke subfolder tersebut.
 
+## Masuk sebagai guru atau murid
+
+Halaman pertama adalah gerbang masuk. **Murid** memasukkan kelas dan nomor absen (nama opsional); progres disimpan di browser per kelas dan nomor absen, sehingga satu komputer bisa dipakai bergantian. **Guru** membuat PIN 4-8 angka pada masuk pertama, lalu membuka **Ruang guru** untuk mengimpor berkas ekspor murid, memfilter per kelas, dan mengunduh CSV.
+
+Penting: ini gerbang tanpa server. PIN dan nomor absen tidak setara akun. Murid yang mengetik nomor absen temannya di perangkatnya sendiri tidak diblokir, dan data murid sampai ke guru lewat berkas ekspor. Login sungguhan dan sinkronisasi otomatis memerlukan backend.
+
 ## Batasan dan privasi
 
 - Percakapan adalah **latihan terbuka berbasis skenario**, bukan AI interaktif. Ketikan dan rekaman siswa **tidak diperiksa otomatis**. Setelah siswa mengirim balasan, skenario berpindah ke giliran berikutnya. Guru perlu menilai pelafalan serta ketepatan jawaban bila digunakan sebagai tugas penilaian.

@@ -118,3 +118,21 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
 .score{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .history{border:0;box-shadow:var(--shadow);border-radius:20px}
 @media(max-width:760px){header{position:static}.hero{min-height:0;border-radius:24px}.tabs{display:flex}.tabs button{flex:1;padding:10px 4px}.scene-view{height:210px}.scene-title .arab{font-size:21px}.dialog-workspace{padding:14px}.card-art{height:170px}.lesson-banner{min-height:150px}}
+
+.panel{background:var(--cream);border-radius:18px;padding:22px 26px;margin:0 0 22px}.panel h2{margin:0 0 10px;font-size:18px}.panel .note{margin:12px 0 0}
+.panel.next{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--blue)}.panel.next small{font-size:10px;letter-spacing:1.5px;font-weight:700;flex-basis:100%;margin-bottom:-8px}.panel.next p{margin:0;flex:1;min-width:200px;font-weight:600}
+.form-row{display:grid;grid-template-columns:2fr 1fr;gap:16px}.form-row label{display:grid;gap:6px;font-size:12px;font-weight:700}.form-row input{border:1px solid var(--line);border-radius:12px;padding:11px 14px;background:#fff;color:var(--ink)}
+.how{margin:0;padding-left:20px;display:grid;gap:8px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:15px;background:#fff}.table-wrap table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}.table-wrap th,.table-wrap td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}.table-wrap th{font-size:11px;letter-spacing:.5px;color:var(--muted);background:#fffdf6}.table-wrap tr:last-child td{border-bottom:0}
+.mini{display:inline-block;width:64px;height:6px;background:#f1f1e9;border-radius:4px;margin-right:8px;vertical-align:middle;overflow:hidden}.mini span{display:block;height:100%;background:#d18e64}
+.chip{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;background:var(--sand)}.chip.ok{background:#d6f0dc}.chip.warn{background:#ffd4cc}
+.x{border:0;background:none;color:var(--muted);padding:4px 8px;border-radius:8px}.x:hover{background:var(--cream)}
+@media(max-width:760px){.form-row{grid-template-columns:1fr}}
+
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(160deg,var(--cream),var(--blue))}
+.gate-card{width:min(420px,100%);background:var(--paper);border-radius:24px;padding:32px;box-shadow:0 20px 50px rgba(46,52,52,.12)}
+.gate-card h1{font-size:30px;margin:22px 0 16px}.gate-card .tabs{display:flex;gap:8px;margin-bottom:20px}.gate-card .tabs button{flex:1}
+.gate-card form{display:grid;gap:14px}.gate-card label{display:grid;gap:6px;font-size:12px;font-weight:700}
+.gate-card input{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;color:var(--ink);font-size:15px}.gate-card .note{margin-top:18px}
+.device .x{margin-left:10px;border:1px solid var(--line)}
+.actions select{border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#fff;color:var(--ink)}

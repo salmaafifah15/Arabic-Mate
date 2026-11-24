@@ -118,6 +118,24 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
 .score{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .history{border:0;box-shadow:var(--shadow);border-radius:20px}
 @media(max-width:760px){header{position:static}.hero{min-height:0;border-radius:24px}.tabs{display:flex}.tabs button{flex:1;padding:10px 4px}.scene-view{height:210px}.scene-title .arab{font-size:21px}.dialog-workspace{padding:14px}.card-art{height:170px}.lesson-banner{min-height:150px}}
+
+.panel{background:var(--cream);border-radius:18px;padding:22px 26px;margin:0 0 22px}.panel h2{margin:0 0 10px;font-size:18px}.panel .note{margin:12px 0 0}
+.panel.next{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--blue)}.panel.next small{font-size:10px;letter-spacing:1.5px;font-weight:700;flex-basis:100%;margin-bottom:-8px}.panel.next p{margin:0;flex:1;min-width:200px;font-weight:600}
+.form-row{display:grid;grid-template-columns:2fr 1fr;gap:16px}.form-row label{display:grid;gap:6px;font-size:12px;font-weight:700}.form-row input{border:1px solid var(--line);border-radius:12px;padding:11px 14px;background:#fff;color:var(--ink)}
+.how{margin:0;padding-left:20px;display:grid;gap:8px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:15px;background:#fff}.table-wrap table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}.table-wrap th,.table-wrap td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}.table-wrap th{font-size:11px;letter-spacing:.5px;color:var(--muted);background:#fffdf6}.table-wrap tr:last-child td{border-bottom:0}
+.mini{display:inline-block;width:64px;height:6px;background:#f1f1e9;border-radius:4px;margin-right:8px;vertical-align:middle;overflow:hidden}.mini span{display:block;height:100%;background:#d18e64}
+.chip{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;background:var(--sand)}.chip.ok{background:#d6f0dc}.chip.warn{background:#ffd4cc}
+.x{border:0;background:none;color:var(--muted);padding:4px 8px;border-radius:8px}.x:hover{background:var(--cream)}
+@media(max-width:760px){.form-row{grid-template-columns:1fr}}
+
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(160deg,var(--cream),var(--blue))}
+.gate-card{width:min(420px,100%);background:var(--paper);border-radius:24px;padding:32px;box-shadow:0 20px 50px rgba(46,52,52,.12)}
+.gate-card h1{font-size:30px;margin:22px 0 16px}.gate-card .tabs{display:flex;gap:8px;margin-bottom:20px}.gate-card .tabs button{flex:1}
+.gate-card form{display:grid;gap:14px}.gate-card label{display:grid;gap:6px;font-size:12px;font-weight:700}
+.gate-card input{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;color:var(--ink);font-size:15px}.gate-card .note{margin-top:18px}
+.device .x{margin-left:10px;border:1px solid var(--line)}
+.actions select{border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#fff;color:var(--ink)}
 </style></head><body><a class="skip" href="#main">Lewati navigasi</a><div id="app"></div><div id="toast" role="status"></div><script type="module">export const themes = [
   {
     "id": "pasar",
@@ -201,102 +219,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
         "khaṣmun",
         "Diskon",
         "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBEaXNrb24iPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U2ZjdlZCIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNWVhYTgxIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNWVhYTgxIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5K4PC90ZXh0PgogPC9zdmc+"
-      ],
-      [
-        "مِيزَانٌ",
-        "mīzānun",
-        "Timbangan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBUaW1iYW5nYW4iPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7impbvuI88L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "طَمَاطِمُ",
-        "ṭamāṭimu",
-        "Tomat",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBUb21hdCI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTdmNmZmIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzkxYmMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzkxYmMiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjYU8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "جَزَرٌ",
-        "jazarun",
-        "Wortel",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBXb3J0ZWwiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZlZjhkYiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjYjg5NjJmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjYjg5NjJmIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn6WVPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "بَصَلٌ",
-        "baṣalun",
-        "Bawang",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBCYXdhbmciPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U2ZjdlZCIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5YTZhIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5YTZhIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn6eFPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "سَلَّةٌ",
-        "sallatun",
-        "Keranjang",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLZXJhbmphbmciPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn6e6PC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "رَخِيصٌ",
-        "rakhīṣun",
-        "Murah",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNdXJhaCI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTdmNmZmIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzkxYmMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzkxYmMiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfj7fvuI88L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "غَالٍ",
-        "ghālin",
-        "Mahal",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNYWhhbCI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNiODk2MmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNiODk2MmYiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfko48L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "مَتْجَرٌ",
-        "matjarun",
-        "Toko",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBUb2tvIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlNmY3ZWQiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOWE2YSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOWE2YSIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+PrDwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "عِنَبٌ",
-        "ʿinabun",
-        "Anggur",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBBbmdndXIiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn42HPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "بَطَاطَا",
-        "baṭāṭā",
-        "Kentang",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLZW50YW5nIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZWY4ZGIiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2I4OTYyZiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2I4OTYyZiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+llDwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "بَيْضٌ",
-        "bayḍun",
-        "Telur",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBUZWx1ciI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfpZo8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "سَمَكٌ",
-        "samakun",
-        "Ikan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBJa2FuIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZmYwZTMiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2NmNzc1YiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2NmNzc1YiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+QnzwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "زَبُونٌ",
-        "zabūnun",
-        "Pelanggan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQZWxhbmdnYW4iPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5mLPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "بِطِّيخٌ",
-        "biṭṭīkhun",
-        "Semangka",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBTZW1hbmdrYSI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNiODk2MmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNiODk2MmYiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjYk8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "عَرَبَةٌ",
-        "ʿarabatun",
-        "Gerobak",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBHZXJvYmFrIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlNmY3ZWQiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOWE2YSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOWE2YSIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+bkjwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "الْبَاقِي",
-        "al-bāqī",
-        "Kembalian",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLZW1iYWxpYW4iPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn6qZPC90ZXh0Pgo8L3N2Zz4K"
       ]
     ],
     "dialog": [
@@ -367,90 +289,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
           [
             "هَلْ يُوجَدُ خَصْمٌ؟",
             "Apakah ada diskon?"
-          ]
-        ]
-      ],
-      [
-        "هَلِ السِّعْرُ مُنَاسِبٌ؟",
-        "Apakah harganya cocok?",
-        [
-          [
-            "نَعَمْ، السِّعْرُ مُنَاسِبٌ.",
-            "Ya, harganya cocok."
-          ],
-          [
-            "هَلْ يُوجَدُ خَصْمٌ؟",
-            "Apakah ada diskon?"
-          ]
-        ]
-      ],
-      [
-        "عِنْدِي خَصْمٌ قَلِيلٌ. هَلْ تُرِيدُ طَمَاطِمَ؟",
-        "Saya punya diskon kecil. Mau tomat?",
-        [
-          [
-            "نَعَمْ، أُرِيدُ كِيلُوغْرَامًا مِنَ الطَّمَاطِمِ.",
-            "Ya, saya mau satu kilogram tomat."
-          ],
-          [
-            "لَا، شُكْرًا. أُرِيدُ جَزَرًا.",
-            "Tidak, terima kasih. Saya mau wortel."
-          ]
-        ]
-      ],
-      [
-        "هَلْ عِنْدَكَ نُقُودٌ صَغِيرَةٌ؟",
-        "Apakah kamu punya uang kecil?",
-        [
-          [
-            "نَعَمْ، تَفَضَّلْ.",
-            "Ya, silakan."
-          ],
-          [
-            "آسِفٌ، لَيْسَ عِنْدِي نُقُودٌ صَغِيرَةٌ.",
-            "Maaf, saya tidak punya uang kecil."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُرِيدُ أَنْ تُجَرِّبَ هَذَا الْعِنَبَ؟",
-        "Apakah kamu mau mencoba anggur ini?",
-        [
-          [
-            "نَعَمْ، شُكْرًا. إِنَّهُ حُلْوٌ.",
-            "Ya, terima kasih. Rasanya manis."
-          ],
-          [
-            "لَا، شُكْرًا. أُرِيدُ بِطِّيخًا.",
-            "Tidak, terima kasih. Saya mau semangka."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُرِيدُ كِيسًا آخَرَ؟",
-        "Apakah kamu mau kantong lagi?",
-        [
-          [
-            "نَعَمْ، مِنْ فَضْلِكَ.",
-            "Ya, tolong."
-          ],
-          [
-            "لَا، عِنْدِي سَلَّةٌ.",
-            "Tidak, saya punya keranjang."
-          ]
-        ]
-      ],
-      [
-        "هَلْ أَنْتَ زَبُونٌ جَدِيدٌ؟",
-        "Apakah kamu pelanggan baru?",
-        [
-          [
-            "نَعَمْ، هَذِهِ أَوَّلُ مَرَّةٍ.",
-            "Ya, ini pertama kalinya."
-          ],
-          [
-            "لَا، أَشْتَرِي مِنْكَ كُلَّ أُسْبُوعٍ.",
-            "Tidak, saya membeli darimu setiap minggu."
           ]
         ]
       ],
@@ -552,102 +390,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
         "jawāzu safarin",
         "Paspor",
         "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQYXNwb3IiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5uCPC90ZXh0PgogPC9zdmc+"
-      ],
-      [
-        "حَقِيبَةٌ",
-        "ḥaqībatun",
-        "Koper",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLb3BlciI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmZmMGUzIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNjZjc3NWIiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNjZjc3NWIiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfp7M8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "بَاخِرَةٌ",
-        "bākhiratun",
-        "Kapal",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLYXBhbCI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTdmNmZmIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzkxYmMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzkxYmMiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfmqI8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "دَرَّاجَةٌ",
-        "darrājatun",
-        "Sepeda",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBTZXBlZGEiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZlZjhkYiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjYjg5NjJmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjYjg5NjJmIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5qyPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "سَائِقٌ",
-        "sā’iqun",
-        "Sopir",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBTb3BpciI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfmpY8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "مَدِينَةٌ",
-        "madīnatun",
-        "Kota",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLb3RhIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZmYwZTMiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2NmNzc1YiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2NmNzc1YiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+Pme+4jzwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "غُرْفَةٌ",
-        "ghurfatun",
-        "Kamar",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLYW1hciI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTdmNmZmIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzkxYmMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzkxYmMiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfm4/vuI88L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "مُسَافِرٌ",
-        "musāfirun",
-        "Musafir",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNdXNhZmlyIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZWY4ZGIiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2I4OTYyZiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2I4OTYyZiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+atjwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "وُصُولٌ",
-        "wuṣūlun",
-        "Kedatangan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLZWRhdGFuZ2FuIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlNmY3ZWQiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOWE2YSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOWE2YSIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+brDwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "مُغَادَرَةٌ",
-        "mughādaratun",
-        "Keberangkatan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLZWJlcmFuZ2thdGFuIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlN2Y2ZmYiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOTFiYyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOTFiYyIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+bqzwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "مِينَاءٌ",
-        "mīnā’un",
-        "Pelabuhan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQZWxhYnVoYW4iPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZlZjhkYiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjYjg5NjJmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjYjg5NjJmIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7impM8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "جِسْرٌ",
-        "jisrun",
-        "Jembatan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBKZW1iYXRhbiI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjIk8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "بَلَدٌ",
-        "baladun",
-        "Negara",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBOZWdhcmEiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn4yNPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "تَأْشِيرَةٌ",
-        "ta’shīratun",
-        "Visa",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBWaXNhIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlN2Y2ZmYiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOTFiYyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOTFiYyIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+bgjwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "مُرْشِدٌ",
-        "murshidun",
-        "Pemandu",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQZW1hbmR1Ij4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZWY4ZGIiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2I4OTYyZiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2I4OTYyZiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+nrTwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "شَاطِئٌ",
-        "shāṭi’un",
-        "Pantai",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQYW50YWkiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U2ZjdlZCIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5YTZhIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5YTZhIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn4+W77iPPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "سِيَاحَةٌ",
-        "siyāḥatun",
-        "Wisata",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBXaXNhdGEiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn46SPC90ZXh0Pgo8L3N2Zz4K"
       ]
     ],
     "dialog": [
@@ -718,90 +460,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
           [
             "لَا، شُكْرًا، أَعْرِفُ الطَّرِيقَ.",
             "Tidak, terima kasih, saya tahu jalannya."
-          ]
-        ]
-      ],
-      [
-        "فِي أَيِّ فُنْدُقٍ سَتَنْزِلُ؟",
-        "Di hotel mana kamu akan menginap?",
-        [
-          [
-            "سَأَنْزِلُ فِي فُنْدُقٍ قَرِيبٍ.",
-            "Saya akan menginap di hotel yang dekat."
-          ],
-          [
-            "لَمْ أَحْجِزْ غُرْفَةً بَعْدُ.",
-            "Saya belum memesan kamar."
-          ]
-        ]
-      ],
-      [
-        "كَمْ يَوْمًا سَتَبْقَى فِي الْمَدِينَةِ؟",
-        "Berapa hari kamu akan tinggal di kota?",
-        [
-          [
-            "سَأَبْقَى ثَلَاثَةَ أَيَّامٍ.",
-            "Saya akan tinggal tiga hari."
-          ],
-          [
-            "سَأَبْقَى أُسْبُوعًا.",
-            "Saya akan tinggal satu minggu."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُرِيدُ سَيَّارَةَ أُجْرَةٍ إِلَى الْفُنْدُقِ؟",
-        "Apakah kamu mau taksi ke hotel?",
-        [
-          [
-            "نَعَمْ، مِنْ فَضْلِكَ.",
-            "Ya, tolong."
-          ],
-          [
-            "لَا، سَأَرْكَبُ الْحَافِلَةَ.",
-            "Tidak, saya akan naik bus."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُرِيدُ زِيَارَةَ الشَّاطِئِ؟",
-        "Apakah kamu mau mengunjungi pantai?",
-        [
-          [
-            "نَعَمْ، أُحِبُّ الْبَحْرَ.",
-            "Ya, saya suka laut."
-          ],
-          [
-            "لَا، أُرِيدُ زِيَارَةَ الْمَتْحَفِ.",
-            "Tidak, saya mau mengunjungi museum."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُرِيدُ مُرْشِدًا سِيَاحِيًّا؟",
-        "Apakah kamu mau pemandu wisata?",
-        [
-          [
-            "نَعَمْ، مِنْ فَضْلِكَ.",
-            "Ya, tolong."
-          ],
-          [
-            "لَا، مَعِي خَرِيطَةٌ.",
-            "Tidak, saya membawa peta."
-          ]
-        ]
-      ],
-      [
-        "مَتَى تَكُونُ الْمُغَادَرَةُ؟",
-        "Kapan keberangkatannya?",
-        [
-          [
-            "الْمُغَادَرَةُ صَبَاحًا.",
-            "Keberangkatannya pagi hari."
-          ],
-          [
-            "الْمُغَادَرَةُ مَسَاءً.",
-            "Keberangkatannya sore hari."
           ]
         ]
       ],
@@ -903,102 +561,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
         "fākihatun",
         "Buah-buahan",
         "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBCdWFoLWJ1YWhhbiI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTdmNmZmIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzkxYmMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzkxYmMiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjYk8L3RleHQ+CiA8L3N2Zz4="
-      ],
-      [
-        "لَحْمٌ",
-        "laḥmun",
-        "Daging",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBEYWdpbmciPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn6WpPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "قَهْوَةٌ",
-        "qahwatun",
-        "Kopi",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLb3BpIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlN2Y2ZmYiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOTFiYyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOTFiYyIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+4piVPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "سُكَّرٌ",
-        "sukkarun",
-        "Gula",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBHdWxhIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZWY4ZGIiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2I4OTYyZiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2I4OTYyZiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+NrDwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "مِلْحٌ",
-        "milḥun",
-        "Garam",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBHYXJhbSI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfp4I8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "حَسَاءٌ",
-        "ḥasā’un",
-        "Sup",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBTdXAiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn42yPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "جُبْنٌ",
-        "jubnun",
-        "Keju",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLZWp1Ij4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlN2Y2ZmYiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOTFiYyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOTFiYyIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+ngDwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "مَطْعَمٌ",
-        "maṭʿamun",
-        "Restoran",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBSZXN0b3JhbiI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNiODk2MmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNiODk2MmYiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjbQ8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "مِلْعَقَةٌ",
-        "milʿaqatun",
-        "Sendok",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBTZW5kb2siPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U2ZjdlZCIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5YTZhIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5YTZhIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn6WEPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "فُطُورٌ",
-        "fuṭūrun",
-        "Sarapan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBTYXJhcGFuIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlN2Y2ZmYiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOTFiYyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOTFiYyIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+lnjwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "غَدَاءٌ",
-        "ghadā’un",
-        "Makan siang",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNYWthbiBzaWFuZyI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNiODk2MmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNiODk2MmYiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjbE8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "عَشَاءٌ",
-        "ʿashā’un",
-        "Makan malam",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNYWthbiBtYWxhbSI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjZ08L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "طَبَقٌ",
-        "ṭabaqun",
-        "Piring",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQaXJpbmciPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn42977iPPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "كُوبٌ",
-        "kūbun",
-        "Gelas",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBHZWxhcyI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTdmNmZmIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzkxYmMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzkxYmMiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfpaQ8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "شَوْكَةٌ",
-        "shawkatun",
-        "Garpu",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBHYXJwdSI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNiODk2MmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNiODk2MmYiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjbQ8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "كَعْكٌ",
-        "kaʿkun",
-        "Kue",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLdWUiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U2ZjdlZCIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5YTZhIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5YTZhIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn42wPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "عَسَلٌ",
-        "ʿasalun",
-        "Madu",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNYWR1Ij4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZmYwZTMiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2NmNzc1YiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2NmNzc1YiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+NrzwvdGV4dD4KPC9zdmc+Cg=="
       ]
     ],
     "dialog": [
@@ -1069,90 +631,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
           [
             "لَا، أَنَا شَبْعَانُ.",
             "Tidak, saya sudah kenyang."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُرِيدُ حَسَاءً سَاخِنًا؟",
-        "Apakah kamu mau sup hangat?",
-        [
-          [
-            "نَعَمْ، أُرِيدُ حَسَاءً مِنْ فَضْلِكَ.",
-            "Ya, saya mau sup, tolong."
-          ],
-          [
-            "لَا، شُكْرًا. أَنَا شَبْعَانُ.",
-            "Tidak, terima kasih. Saya kenyang."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُرِيدُ قَهْوَةً بِالسُّكَّرِ؟",
-        "Apakah kamu mau kopi dengan gula?",
-        [
-          [
-            "نَعَمْ، قَلِيلًا مِنَ السُّكَّرِ.",
-            "Ya, sedikit gula."
-          ],
-          [
-            "لَا، بِدُونِ سُكَّرٍ.",
-            "Tidak, tanpa gula."
-          ]
-        ]
-      ],
-      [
-        "هَلِ الطَّعَامُ لَذِيذٌ؟",
-        "Apakah makanannya enak?",
-        [
-          [
-            "نَعَمْ، الطَّعَامُ لَذِيذٌ جِدًّا.",
-            "Ya, makanannya enak sekali."
-          ],
-          [
-            "نَعَمْ، لَكِنْ أُرِيدُ قَلِيلًا مِنَ الْمِلْحِ.",
-            "Ya, tetapi saya mau sedikit garam."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُرِيدُ فُطُورًا أَمْ غَدَاءً؟",
-        "Apakah kamu mau sarapan atau makan siang?",
-        [
-          [
-            "أُرِيدُ فُطُورًا، مِنْ فَضْلِكَ.",
-            "Saya mau sarapan, tolong."
-          ],
-          [
-            "أُرِيدُ غَدَاءً، مِنْ فَضْلِكَ.",
-            "Saya mau makan siang, tolong."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُرِيدُ كَعْكًا بِالْعَسَلِ؟",
-        "Apakah kamu mau kue dengan madu?",
-        [
-          [
-            "نَعَمْ، أُحِبُّ الْعَسَلَ.",
-            "Ya, saya suka madu."
-          ],
-          [
-            "لَا، شُكْرًا. يَكْفِي.",
-            "Tidak, terima kasih. Sudah cukup."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُرِيدُ الْحِسَابَ الْآنَ؟",
-        "Apakah kamu mau membayar sekarang?",
-        [
-          [
-            "نَعَمْ، مِنْ فَضْلِكَ.",
-            "Ya, tolong."
-          ],
-          [
-            "بَعْدَ قَلِيلٍ، شُكْرًا.",
-            "Sebentar lagi, terima kasih."
           ]
         ]
       ],
@@ -1254,102 +732,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
         "shaṭranjun",
         "Catur",
         "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBDYXR1ciI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNhYjhiNDkiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNhYjhiNDkiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPuKZn++4jzwvdGV4dD4KIDwvc3ZnPg=="
-      ],
-      [
-        "طَبْخٌ",
-        "ṭabkhun",
-        "Memasak",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNZW1hc2FrIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZmYwZTMiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2NmNzc1YiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2NmNzc1YiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+NszwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "غِنَاءٌ",
-        "ghinā’un",
-        "Menyanyi",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNZW55YW55aSI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTdmNmZmIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzkxYmMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzkxYmMiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjqQ8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "صَيْدُ السَّمَكِ",
-        "ṣaydu s-samaki",
-        "Memancing",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNZW1hbmNpbmciPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZlZjhkYiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjYjg5NjJmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjYjg5NjJmIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn46jPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "حَدِيقَةٌ",
-        "ḥadīqatun",
-        "Taman",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBUYW1hbiI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjLM8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "كُرَةُ الْقَدَمِ",
-        "kuratu l-qadami",
-        "Sepak bola",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBTZXBhayBib2xhIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZmYwZTMiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2NmNzc1YiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2NmNzc1YiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+4pq9PC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "رَقْصٌ",
-        "raqṣun",
-        "Menari",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNZW5hcmkiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5KDPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "لُعْبَةٌ",
-        "luʿbatun",
-        "Permainan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQZXJtYWluYW4iPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZlZjhkYiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjYjg5NjJmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjYjg5NjJmIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn46yPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "جِيتَارٌ",
-        "jītārun",
-        "Gitar",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBHaXRhciI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjrg8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "جَبَلٌ",
-        "jabalun",
-        "Gunung",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBHdW51bmciPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7im7DvuI88L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "بِيَانُو",
-        "biyānū",
-        "Piano",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQaWFubyI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNiODk2MmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNiODk2MmYiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjrk8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "فِيلْمٌ",
-        "fīlmun",
-        "Film",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBGaWxtIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlNmY3ZWQiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOWE2YSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOWE2YSIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+OrDwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "لَوْحَةٌ",
-        "lawḥatun",
-        "Lukisan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBMdWtpc2FuIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZmYwZTMiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2NmNzc1YiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2NmNzc1YiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+WvO+4jzwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "كَامِيرَا",
-        "kāmīrā",
-        "Kamera",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLYW1lcmEiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5O3PC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "تِنِسٌ",
-        "tinisun",
-        "Tenis",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBUZW5pcyI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNiODk2MmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNiODk2MmYiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfjr48L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "شِعْرٌ",
-        "shiʿrun",
-        "Puisi",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQdWlzaSI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfk5w8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "قِصَّةٌ",
-        "qiṣṣatun",
-        "Cerita",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBDZXJpdGEiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5OVPC90ZXh0Pgo8L3N2Zz4K"
       ]
     ],
     "dialog": [
@@ -1420,90 +802,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
           [
             "لَا، أُفَضِّلُ كُرَةَ الْقَدَمِ.",
             "Tidak, saya lebih suka sepak bola."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُحِبُّ الْغِنَاءَ؟",
-        "Apakah kamu suka menyanyi?",
-        [
-          [
-            "نَعَمْ، أُحِبُّ الْغِنَاءَ.",
-            "Ya, saya suka menyanyi."
-          ],
-          [
-            "لَا، أُحِبُّ الْجِيتَارَ.",
-            "Tidak, saya suka gitar."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تَلْعَبُ كُرَةَ الْقَدَمِ؟",
-        "Apakah kamu bermain sepak bola?",
-        [
-          [
-            "نَعَمْ، أَلْعَبُ مَعَ أَصْدِقَائِي.",
-            "Ya, saya bermain bersama teman-teman."
-          ],
-          [
-            "لَا، أُفَضِّلُ الْمَشْيَ فِي الْحَدِيقَةِ.",
-            "Tidak, saya lebih suka berjalan di taman."
-          ]
-        ]
-      ],
-      [
-        "مَاذَا تَفْعَلُ فِي يَوْمِ الْعُطْلَةِ؟",
-        "Apa yang kamu lakukan di hari libur?",
-        [
-          [
-            "أَقْرَأُ كِتَابًا وَأَرْسُمُ.",
-            "Saya membaca buku dan menggambar."
-          ],
-          [
-            "أَذْهَبُ إِلَى الْحَدِيقَةِ.",
-            "Saya pergi ke taman."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُحِبُّ الْمَشْيَ فِي الْجَبَلِ؟",
-        "Apakah kamu suka berjalan di gunung?",
-        [
-          [
-            "نَعَمْ، الْجَبَلُ جَمِيلٌ.",
-            "Ya, gunung itu indah."
-          ],
-          [
-            "لَا، أُفَضِّلُ الْبَحْرَ.",
-            "Tidak, saya lebih suka laut."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تَعْزِفُ عَلَى الْبِيَانُو؟",
-        "Apakah kamu bermain piano?",
-        [
-          [
-            "نَعَمْ، أَتَعَلَّمُ الْبِيَانُو.",
-            "Ya, saya belajar piano."
-          ],
-          [
-            "لَا، أَعْزِفُ عَلَى الْجِيتَارِ.",
-            "Tidak, saya bermain gitar."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُحِبُّ مُشَاهَدَةَ الْأَفْلَامِ؟",
-        "Apakah kamu suka menonton film?",
-        [
-          [
-            "نَعَمْ، أُحِبُّ الْأَفْلَامَ الْجَمِيلَةَ.",
-            "Ya, saya suka film yang bagus."
-          ],
-          [
-            "أُحِبُّ قِرَاءَةَ الْقِصَصِ أَكْثَرَ.",
-            "Saya lebih suka membaca cerita."
           ]
         ]
       ],
@@ -1605,102 +903,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
         "ṭiflun",
         "Anak kecil",
         "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBBbmFrIGtlY2lsIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlNmY3ZWQiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzVlYWE4MSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzVlYWE4MSIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+nkjwvdGV4dD4KIDwvc3ZnPg=="
-      ],
-      [
-        "ابْنٌ",
-        "ibnun",
-        "Anak laki-laki",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBBbmFrIGxha2ktbGFraSI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmZmMGUzIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNjZjc3NWIiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNjZjc3NWIiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfkaY8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "بِنْتٌ",
-        "bintun",
-        "Anak perempuan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBBbmFrIHBlcmVtcHVhbiI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTdmNmZmIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzkxYmMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzkxYmMiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfkac8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "زَوْجٌ",
-        "zawjun",
-        "Suami",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBTdWFtaSI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNiODk2MmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNiODk2MmYiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfpLU8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "زَوْجَةٌ",
-        "zawjatun",
-        "Istri",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBJc3RyaSI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfkbA8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "بَيْتٌ",
-        "baytun",
-        "Rumah",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBSdW1haCI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmZmMGUzIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNjZjc3NWIiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNjZjc3NWIiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfj6A8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "وَالِدَانِ",
-        "wālidāni",
-        "Orang tua",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBPcmFuZyB0dWEiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5Go4oCN8J+RqeKAjfCfkac8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "حَفِيدٌ",
-        "ḥafīdun",
-        "Cucu",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBDdWN1Ij4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZWY4ZGIiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2I4OTYyZiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2I4OTYyZiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+nkjwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "ضَيْفٌ",
-        "ḍayfun",
-        "Tamu",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBUYW11Ij4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlNmY3ZWQiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOWE2YSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOWE2YSIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+bi++4jzwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "صَدِيقٌ",
-        "ṣadīqun",
-        "Teman",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBUZW1hbiI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTdmNmZmIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiOWUzZmYiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzkxYmMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzkxYmMiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfp5HigI3wn6Sd4oCN8J+nkTwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "جَارٌ",
-        "jārun",
-        "Tetangga",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBUZXRhbmdnYSI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNiODk2MmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNiODk2MmYiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfj5jvuI88L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "مَطْبَخٌ",
-        "maṭbakhun",
-        "Dapur",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBEYXB1ciI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfpZg8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "سَرِيرٌ",
-        "sarīrun",
-        "Tempat tidur",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBUZW1wYXQgdGlkdXIiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5uP77iPPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "عِيدٌ",
-        "ʿīdun",
-        "Hari raya",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBIYXJpIHJheWEiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn46JPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "هَدِيَّةٌ",
-        "hadiyyatun",
-        "Hadiah",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBIYWRpYWgiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZlZjhkYiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjYjg5NjJmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjYjg5NjJmIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn46BPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "صُورَةٌ",
-        "ṣūratun",
-        "Foto",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBGb3RvIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNlNmY3ZWQiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iIzRjOWE2YSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iIzRjOWE2YSIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+WvO+4jzwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "رَضِيعٌ",
-        "raḍīʿun",
-        "Bayi",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBCYXlpIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZmYwZTMiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2NmNzc1YiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2NmNzc1YiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+8J+RtjwvdGV4dD4KPC9zdmc+Cg=="
       ]
     ],
     "dialog": [
@@ -1771,90 +973,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
           [
             "يَزُورُنَا خَالِي وَخَالَتِي.",
             "Paman dan bibi dari ibu mengunjungi kami."
-          ]
-        ]
-      ],
-      [
-        "كَمْ فَرْدًا فِي أُسْرَتِكَ؟",
-        "Berapa anggota keluargamu?",
-        [
-          [
-            "فِي أُسْرَتِي خَمْسَةُ أَفْرَادٍ.",
-            "Ada lima orang dalam keluarga saya."
-          ],
-          [
-            "فِي أُسْرَتِي أَرْبَعَةُ أَفْرَادٍ.",
-            "Ada empat orang dalam keluarga saya."
-          ]
-        ]
-      ],
-      [
-        "أَيْنَ بَيْتُ أُسْرَتِكَ؟",
-        "Di mana rumah keluargamu?",
-        [
-          [
-            "بَيْتُنَا قَرِيبٌ مِنَ الْمَدْرَسَةِ.",
-            "Rumah kami dekat sekolah."
-          ],
-          [
-            "بَيْتُنَا كَبِيرٌ وَجَمِيلٌ.",
-            "Rumah kami besar dan indah."
-          ]
-        ]
-      ],
-      [
-        "هَلْ يَزُورُكُمُ الضُّيُوفُ كَثِيرًا؟",
-        "Apakah tamu sering mengunjungi kalian?",
-        [
-          [
-            "نَعَمْ، يَزُورُنَا جِيرَانُنَا.",
-            "Ya, tetangga kami berkunjung."
-          ],
-          [
-            "أَحْيَانًا، يَزُورُنَا جَدِّي وَجَدَّتِي.",
-            "Kadang-kadang kakek dan nenek saya berkunjung."
-          ]
-        ]
-      ],
-      [
-        "مَنْ يَطْبُخُ فِي الْمَطْبَخِ؟",
-        "Siapa yang memasak di dapur?",
-        [
-          [
-            "أُمِّي تَطْبُخُ فِي الْمَطْبَخِ.",
-            "Ibu saya memasak di dapur."
-          ],
-          [
-            "أَنَا وَأَبِي نَطْبُخُ مَعًا.",
-            "Saya dan ayah memasak bersama."
-          ]
-        ]
-      ],
-      [
-        "مَاذَا تَفْعَلُونَ فِي الْعِيدِ؟",
-        "Apa yang kalian lakukan saat hari raya?",
-        [
-          [
-            "نَزُورُ الْأَقَارِبَ وَالْجِيرَانَ.",
-            "Kami mengunjungi kerabat dan tetangga."
-          ],
-          [
-            "نَأْكُلُ مَعًا وَنُقَدِّمُ الْهَدَايَا.",
-            "Kami makan bersama dan memberi hadiah."
-          ]
-        ]
-      ],
-      [
-        "هَلْ عِنْدَكَ صَدِيقٌ فِي الْحَيِّ؟",
-        "Apakah kamu punya teman di lingkunganmu?",
-        [
-          [
-            "نَعَمْ، صَدِيقِي جَارِي.",
-            "Ya, temanku adalah tetanggaku."
-          ],
-          [
-            "نَعَمْ، عِنْدِي أَصْدِقَاءُ كَثِيرُونَ.",
-            "Ya, saya punya banyak teman."
           ]
         ]
       ],
@@ -1956,102 +1074,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
         "mimḥātun",
         "Penghapus",
         "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQZW5naGFwdXMiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn6e9PC90ZXh0PgogPC9zdmc+"
-      ],
-      [
-        "مُعَلِّمَةٌ",
-        "muʿallimatun",
-        "Guru perempuan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBHdXJ1IHBlcmVtcHVhbiI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmZmMGUzIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNjZjc3NWIiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNjZjc3NWIiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfkanigI3wn4+rPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "طَالِبَةٌ",
-        "ṭālibatun",
-        "Siswa perempuan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBTaXN3YSBwZXJlbXB1YW4iPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5Gp4oCN8J+OkzwvdGV4dD4KPC9zdmc+Cg=="
-      ],
-      [
-        "دَرْسٌ",
-        "darsun",
-        "Pelajaran",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQZWxhamFyYW4iPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZlZjhkYiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjYjg5NjJmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjYjg5NjJmIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5OWPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "امْتِحَانٌ",
-        "imtiḥānun",
-        "Ujian",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBVamlhbiI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfk508L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "مَكْتَبَةٌ",
-        "maktabatun",
-        "Perpustakaan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQZXJwdXN0YWthYW4iPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5OaPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "مِسْطَرَةٌ",
-        "misṭaratun",
-        "Penggaris",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQZW5nZ2FyaXMiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5OPPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "وَاجِبٌ",
-        "wājibun",
-        "Pekerjaan rumah",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQZWtlcmphYW4gcnVtYWgiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZlZjhkYiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjYjg5NjJmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjYjg5NjJmIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7inI3vuI88L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "جَرَسٌ",
-        "jarasun",
-        "Bel",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBCZWwiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U2ZjdlZCIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2JjZTZjYiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5YTZhIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5YTZhIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn5SUPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "قَلَمُ رَصَاصٍ",
-        "qalamu raṣāṣin",
-        "Pensil",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBQZW5zaWwiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7inI/vuI88L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "مُدِيرٌ",
-        "mudīrun",
-        "Kepala sekolah",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLZXBhbGEgc2Vrb2xhaCI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZmVmOGRiIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjZjdkZjhjIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiNiODk2MmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiNiODk2MmYiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfp5HigI3wn5K8PC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "مَلْعَبٌ",
-        "malʿabun",
-        "Lapangan",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBMYXBhbmdhbiI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfj5/vuI88L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "اسْتِرَاحَةٌ",
-        "istirāḥatun",
-        "Istirahat",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBJc3RpcmFoYXQiPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2ZmZjBlMyIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjZmZiZTkxIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjY2Y3NzViIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjY2Y3NzViIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7wn6eDPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "سَاعَةٌ",
-        "sāʿatun",
-        "Jam",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBKYW0iPgogPHJlY3Qgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNTUiIHJ4PSIyMSIgZmlsbD0iI2U3ZjZmZiIvPgogPGNpcmNsZSBjeD0iMTY3IiBjeT0iNDkiIHI9IjQ2IiBmaWxsPSIjYjllM2ZmIiBvcGFjaXR5PSIuNjciLz4KIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTE2IiByPSIzMiIgZmlsbD0iI2I5ZTNmZiIgb3BhY2l0eT0iLjQ4Ii8+CiA8cGF0aCBkPSJNMjEgMjdsNyAwTTI0IDIzbDAgOE0xODggMTA5bDggME0xOTIgMTA1bDAgOCIgc3Ryb2tlPSIjNGM5MWJjIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iLjU4Ii8+CiA8ZWxsaXBzZSBjeD0iMTEwIiBjeT0iMTMwIiByeD0iNDUiIHJ5PSI4IiBmaWxsPSIjNGM5MWJjIiBvcGFjaXR5PSIuMTQiLz4KIDx0ZXh0IHg9IjExMCIgeT0iMTA2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjgzIiBmb250LWZhbWlseT0iJ1NlZ29lIFVJIEVtb2ppJywnQXBwbGUgQ29sb3IgRW1vamknLCdOb3RvIENvbG9yIEVtb2ppJyxzYW5zLXNlcmlmIj7ij7A8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "مِقَصٌّ",
-        "miqaṣṣun",
-        "Gunting",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBHdW50aW5nIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZWY4ZGIiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2Y3ZGY4YyIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmN2RmOGMiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2I4OTYyZiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2I4OTYyZiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+4pyC77iPPC90ZXh0Pgo8L3N2Zz4K"
-      ],
-      [
-        "حَاسُوبٌ",
-        "ḥāsūbun",
-        "Komputer",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBLb21wdXRlciI+CiA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE1NSIgcng9IjIxIiBmaWxsPSIjZTZmN2VkIi8+CiA8Y2lyY2xlIGN4PSIxNjciIGN5PSI0OSIgcj0iNDYiIGZpbGw9IiNiY2U2Y2IiIG9wYWNpdHk9Ii42NyIvPgogPGNpcmNsZSBjeD0iNDIiIGN5PSIxMTYiIHI9IjMyIiBmaWxsPSIjYmNlNmNiIiBvcGFjaXR5PSIuNDgiLz4KIDxwYXRoIGQ9Ik0yMSAyN2w3IDBNMjQgMjNsMCA4TTE4OCAxMDlsOCAwTTE5MiAxMDVsMCA4IiBzdHJva2U9IiM0YzlhNmEiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNTgiLz4KIDxlbGxpcHNlIGN4PSIxMTAiIGN5PSIxMzAiIHJ4PSI0NSIgcnk9IjgiIGZpbGw9IiM0YzlhNmEiIG9wYWNpdHk9Ii4xNCIvPgogPHRleHQgeD0iMTEwIiB5PSIxMDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iODMiIGZvbnQtZmFtaWx5PSInU2Vnb2UgVUkgRW1vamknLCdBcHBsZSBDb2xvciBFbW9qaScsJ05vdG8gQ29sb3IgRW1vamknLHNhbnMtc2VyaWYiPvCfkrs8L3RleHQ+Cjwvc3ZnPgo="
-      ],
-      [
-        "رِيَاضِيَّاتٌ",
-        "riyāḍiyyātun",
-        "Matematika",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTU1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IklsdXN0cmFzaSBNYXRlbWF0aWthIj4KIDxyZWN0IHdpZHRoPSIyMjAiIGhlaWdodD0iMTU1IiByeD0iMjEiIGZpbGw9IiNmZmYwZTMiLz4KIDxjaXJjbGUgY3g9IjE2NyIgY3k9IjQ5IiByPSI0NiIgZmlsbD0iI2ZmYmU5MSIgb3BhY2l0eT0iLjY3Ii8+CiA8Y2lyY2xlIGN4PSI0MiIgY3k9IjExNiIgcj0iMzIiIGZpbGw9IiNmZmJlOTEiIG9wYWNpdHk9Ii40OCIvPgogPHBhdGggZD0iTTIxIDI3bDcgME0yNCAyM2wwIDhNMTg4IDEwOWw4IDBNMTkyIDEwNWwwIDgiIHN0cm9rZT0iI2NmNzc1YiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii41OCIvPgogPGVsbGlwc2UgY3g9IjExMCIgY3k9IjEzMCIgcng9IjQ1IiByeT0iOCIgZmlsbD0iI2NmNzc1YiIgb3BhY2l0eT0iLjE0Ii8+CiA8dGV4dCB4PSIxMTAiIHk9IjEwNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI4MyIgZm9udC1mYW1pbHk9IidTZWdvZSBVSSBFbW9qaScsJ0FwcGxlIENvbG9yIEVtb2ppJywnTm90byBDb2xvciBFbW9qaScsc2Fucy1zZXJpZiI+4p6XPC90ZXh0Pgo8L3N2Zz4K"
       ]
     ],
     "dialog": [
@@ -2126,90 +1148,6 @@ h1 em{background:linear-gradient(90deg,#e8775a,#d9962f);-webkit-background-clip:
         ]
       ],
       [
-        "هَلْ عِنْدَكَ وَاجِبٌ الْيَوْمَ؟",
-        "Apakah kamu punya PR hari ini?",
-        [
-          [
-            "نَعَمْ، عِنْدِي وَاجِبٌ فِي اللُّغَةِ الْعَرَبِيَّةِ.",
-            "Ya, saya punya PR bahasa Arab."
-          ],
-          [
-            "لَا، أَنْهَيْتُ الْوَاجِبَ.",
-            "Tidak, PR saya sudah selesai."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تَذْهَبُ إِلَى الْمَكْتَبَةِ فِي الِاسْتِرَاحَةِ؟",
-        "Apakah kamu pergi ke perpustakaan saat istirahat?",
-        [
-          [
-            "نَعَمْ، أُحِبُّ الْقِرَاءَةَ فِي الْمَكْتَبَةِ.",
-            "Ya, saya suka membaca di perpustakaan."
-          ],
-          [
-            "لَا، أَلْعَبُ مَعَ أَصْدِقَائِي.",
-            "Tidak, saya bermain dengan teman-teman."
-          ]
-        ]
-      ],
-      [
-        "مَتَى الِامْتِحَانُ؟",
-        "Kapan ujiannya?",
-        [
-          [
-            "الِامْتِحَانُ يَوْمَ الْخَمِيسِ.",
-            "Ujiannya hari Kamis."
-          ],
-          [
-            "لَا أَعْرِفُ، سَأَسْأَلُ الْمُعَلِّمَ.",
-            "Saya tidak tahu, saya akan bertanya kepada guru."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تُحِبُّ الرِّيَاضِيَّاتِ؟",
-        "Apakah kamu suka matematika?",
-        [
-          [
-            "نَعَمْ، أُحِبُّهَا.",
-            "Ya, saya menyukainya."
-          ],
-          [
-            "لَا، أُحِبُّ اللُّغَةَ الْعَرَبِيَّةَ.",
-            "Tidak, saya suka bahasa Arab."
-          ]
-        ]
-      ],
-      [
-        "مَتَى يَدُقُّ الْجَرَسُ؟",
-        "Kapan bel berbunyi?",
-        [
-          [
-            "يَدُقُّ الْجَرَسُ السَّاعَةَ الْعَاشِرَةَ.",
-            "Bel berbunyi pada jam sepuluh."
-          ],
-          [
-            "بَعْدَ قَلِيلٍ.",
-            "Sebentar lagi."
-          ]
-        ]
-      ],
-      [
-        "هَلْ تَلْعَبُ فِي الْمَلْعَبِ؟",
-        "Apakah kamu bermain di lapangan?",
-        [
-          [
-            "نَعَمْ، أَلْعَبُ كُرَةَ الْقَدَمِ.",
-            "Ya, saya bermain sepak bola."
-          ],
-          [
-            "لَا، أَجْلِسُ فِي الْفَصْلِ.",
-            "Tidak, saya duduk di kelas."
-          ]
-        ]
-      ],
-      [
         "أَحْسَنْتَ! هَلْ أَنْتَ مُسْتَعِدٌّ لِلدَّرْسِ؟",
         "Bagus! Apakah kamu siap mengikuti pelajaran?",
         [
@@ -2238,7 +1176,13 @@ export function questions(theme) {
 }
 
 const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const key='arabicmate:v1';let progress={learned:[],dialogs:[],attempts:[]};try{const v=JSON.parse(localStorage.getItem(key));if(v&&Array.isArray(v.learned)&&Array.isArray(v.dialogs)&&Array.isArray(v.attempts))progress=v}catch{}
+let key='arabicmate:v1',progress,session=null;
+const okSes=x=>x&&(x.role==='guru'||(x.role==='murid'&&/^[A-Za-z0-9 _-]{1,12}$/.test(x.kelas||'')&&Number.isInteger(x.absen)&&x.absen>=1&&x.absen<=99));
+function loadProgress(){progress={learned:[],dialogs:[],attempts:[]};try{const v=JSON.parse(localStorage.getItem(key));if(v&&Array.isArray(v.learned)&&Array.isArray(v.dialogs)&&Array.isArray(v.attempts))progress=v}catch{}progress.profile=progress.profile&&typeof progress.profile==='object'?progress.profile:{name:'',kelas:''};if(session?.role==='murid'){progress.profile.kelas=session.kelas;progress.profile.absen=session.absen;if(!progress.profile.name)progress.profile.name=session.nama||''}}
+function setSession(x){session=x;try{x?sessionStorage.setItem('arabicmate:sesi',JSON.stringify(x)):sessionStorage.removeItem('arabicmate:sesi')}catch{}key=x&&x.role==='murid'?`arabicmate:v1:${x.kelas.toLowerCase()}:${x.absen}`:'arabicmate:v1';loadProgress()}
+try{const x=JSON.parse(sessionStorage.getItem('arabicmate:sesi'));if(okSes(x))setSession(x)}catch{}
+if(!session)loadProgress();
+progress.profile=progress.profile||{name:'',kelas:''};let roster=[];try{const r=JSON.parse(localStorage.getItem('arabicmate:guru:v1'));if(Array.isArray(r))roster=r}catch{}
 let search='',filter='semua',tab='kosakata',card=0,flipped=false,step=0,chat=[],answers={},submitted=false,current='';
 let draft='',recordedUrl='',recorder=null,recordingStream=null,isRecording=false,recognition=null,isRecognizing=false;
 function clearRecordedDraft(){if(recordedUrl){URL.revokeObjectURL(recordedUrl);recordedUrl=''}}
@@ -2254,10 +1198,10 @@ function stopDictation(){if(recognition){recognition.onend=null;recognition.abor
 function clearConversation(){stopRecording(true);stopDictation();clearRecordedDraft();for(const msg of chat)if(msg.audio)URL.revokeObjectURL(msg.audio);chat=[];step=0;draft=''}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),3500)}
 function save(){try{localStorage.setItem(key,JSON.stringify(progress))}catch{toast('Penyimpanan browser tidak tersedia. Progres hanya bertahan selama sesi ini.')}}
-function route(){return location.hash.slice(1)||'beranda'}
+function route(){return location.hash.slice(1)||(session?.role==='guru'?'guru':'beranda')}
 function go(r){location.hash=r}
 function arab(s,cls=''){return `<span lang="ar" dir="rtl" class="arab ${cls}">${esc(s)}</span>`}
-function render(){const r=route();$('#app').innerHTML=`<aside><a class="brand" href="#beranda"><span class="brand-icon">ع</span><span>arabic<span class="light">mate</span><small>TEMAN BELAJAR BAHASA ARAB</small></span></a><div class="menu-label">RUANG BELAJARMU</div><nav>${[['beranda','⌂','Beranda'],['tema','▦','Jelajahi tema'],['progres','◷','Progres belajar']].map(([id,ico,t])=>`<a href="#${id}" class="${r===id||(id==='tema'&&r.startsWith('belajar/'))?'active':''}"><span>${ico}</span>${t}</a>`).join('')}</nav><div class="side-note"><span>✦</span><h3>Sedikit, tapi setiap hari.</h3><p>Satu kata baru hari ini, satu langkah lebih dekat.</p><span lang="ar" dir="rtl">خُطْوَةً بِخُطْوَةٍ</span></div><a class="about-link" href="#tentang">ⓘ Tentang Arabic Mate</a></aside><div class="shell"><header><span>Belajar dengan rasa ingin tahu <span class="spark">✦</span></span><span class="device">◉ Progres di perangkat ini</span></header><main id="main" tabindex="-1">${r.startsWith('belajar/')?lesson(r.split('/')[1]):r==='tema'?themePage():r==='progres'?dashboard():r==='tentang'?about():home()}</main><footer>Arabic Mate <span>Belajar pelan-pelan. Bertumbuh setiap hari.</span><span>Versi mandiri · Tanpa akun</span></footer></div>`;bind();}
+function render(){if(!session){gateRender();return}let r=route();if(session.role==='murid'&&r==='guru')r='beranda';if(session.role==='guru'&&(r==='beranda'||r==='progres'))r='guru';$('#app').innerHTML=`<aside><a class="brand" href="#beranda"><span class="brand-icon">ع</span><span>arabic<span class="light">mate</span><small>TEMAN BELAJAR BAHASA ARAB</small></span></a><div class="menu-label">RUANG BELAJARMU</div><nav>${(session.role==='guru'?[['guru','▤','Ruang guru'],['tema','▦','Pratinjau materi']]:[['beranda','⌂','Beranda'],['tema','▦','Jelajahi tema'],['progres','◷','Progres belajar']]).map(([id,ico,t])=>`<a href="#${id}" class="${r===id||(id==='tema'&&r.startsWith('belajar/'))?'active':''}"><span>${ico}</span>${t}</a>`).join('')}</nav><div class="side-note"><span>✦</span><h3>Sedikit, tapi setiap hari.</h3><p>Satu kata baru hari ini, satu langkah lebih dekat.</p><span lang="ar" dir="rtl">خُطْوَةً بِخُطْوَةٍ</span></div><a class="about-link" href="#tentang">ⓘ Tentang Arabic Mate</a></aside><div class="shell"><header><span>Belajar dengan rasa ingin tahu <span class="spark">✦</span></span><span class="device">${session.role==='guru'?'◉ Guru':`◉ Kelas ${esc(session.kelas)} · No. ${session.absen}${progress.profile.name?' · '+esc(progress.profile.name):''}`} <button class="x" id="logout">Keluar</button></span></header><main id="main" tabindex="-1">${r.startsWith('belajar/')?lesson(r.split('/')[1]):r==='tema'?themePage():r==='progres'?dashboard():r==='guru'?teacher():r==='tentang'?about():home()}</main><footer>Arabic Mate <span>Belajar pelan-pelan. Bertumbuh setiap hari.</span><span>Versi mandiri · Tanpa server</span></footer></div>`;bind();}
 function home(){const last=progress.learned.length?themes.find(t=>t.id===progress.learned.at(-1).split(':')[0])||themes[0]:themes[0];return `<div class="eyebrow">أَهْلًا وَسَهْلًا · SELAMAT DATANG</div><section class="hero"><div><div class="pill">✦ Teman kecil, perjalanan besar</div><h1>Bahasa baru.<br>Cerita <em>baru.</em></h1><p>Kenali bahasa Arab lewat hal-hal yang dekat denganmu. Mulai dari satu kata, lalu berani bercakap.</p><a class="btn dark" href="#belajar/${last.id}">${progress.learned.length?'Lanjutkan belajar':'Mulai petualangan'} <span>↗</span></a><a class="text-link" href="#tema">Lihat semua tema →</a><div class="hero-tags"><span>✓ Untuk pemula</span><span>✓ Belajar sesuai ritmemu</span></div></div><div class="hero-art" aria-label="Ilustrasi buku bahasa Arab"><span class="orb o1"></span><span class="orb o2"></span><div class="float hello">مَرْحَبًا! <small>Halo, teman!</small></div><div class="book"><div class="book-page"><small>PERJALANAN DIMULAI DARI</small><span lang="ar" dir="rtl">أ ب ت</span><strong>Satu kata baru.</strong><div class="book-lines"></div></div></div><div class="float word">✦ <span>كِتَابٌ<small>kitābun · buku</small></span></div><span class="art-star">✳</span></div></section><section class="stats"><div><span class="stat-icon peach">▦</span><div><strong>${themes.length} tema</strong><small>Dekat dengan keseharian</small></div></div><div><span class="stat-icon blue">ع</span><div><strong>${themes.reduce((n,t)=>n+t.words.length,0)} kosakata</strong><small>Langkah kecil yang berarti</small></div></div><div><span class="stat-icon yellow">↗</span><div><strong>${progress.learned.length} dipelajari</strong><small>Perjalananmu sudah dimulai</small></div></div></section><div class="section-head"><div><div class="eyebrow">DUNIA KECIL UNTUK DIJELAJAHI</div><h2>Hari ini, mau belajar apa?</h2><p>Pilih satu tema. Temukan kata dan cerita di dalamnya.</p></div><a class="text-link" href="#tema">Semua tema ↗</a></div><div class="grid">${themes.map(themeCard).join('')}</div><section class="journey"><div><div class="eyebrow">TIDAK PERLU BURU-BURU</div><h2>Empat langkah, banyak cerita.</h2></div><div class="steps">${['Kenali kosakata','Balik flashcard','Coba percakapan','Uji pemahaman'].map((s,i)=>`<div><b>0${i+1}</b><span>${s}</span></div>`).join('')}</div></section>`}
 function themeCard(t){const n=progress.learned.filter(id=>id.startsWith(t.id+':')).length;return `<a class="theme-card" href="#belajar/${t.id}"><div class="card-art ${t.color}" style="--scene:url('${esc(t.scene)}')"><span class="scene-icon">${t.icon}</span><span class="scene-word" lang="ar" dir="rtl">${t.arabic}</span><span class="level">Pemula · Fusha</span></div><div class="card-body"><small>${t.words.length} KOSAKATA · ${t.dialog.length} GILIRAN</small><h3>${t.title}<span>↗</span></h3><p>${t.description}</p><div class="card-progress"><span style="width:${n/t.words.length*100}%"></span></div><div class="card-foot"><span>${n}/${t.words.length} kata dipelajari</span><span>± 20 menit</span></div></div></a>`}
 function themePage(){return `<div class="eyebrow">PILIH TEMPAT CERITAMU DIMULAI</div><h1 class="page-title">Jelajahi tema.</h1><p class="intro">Dari pasar sampai ruang kelas, bahasa Arab hadir di sekitarmu.</p><div class="toolbar"><input id="search" type="search" placeholder="Cari tema atau kosakata…" value="${esc(search)}" aria-label="Cari tema atau kosakata"><select id="filter" aria-label="Filter progres"><option value="semua" ${filter==='semua'?'selected':''}>Semua tema</option><option value="baru" ${filter==='baru'?'selected':''}>Belum dimulai</option><option value="mulai" ${filter==='mulai'?'selected':''}>Sudah dimulai</option></select></div><div id="theme-results" class="grid">${filtered()}</div>`}
@@ -2266,9 +1210,53 @@ function lesson(id){const t=themes.find(t=>t.id===id);if(!t)return '<h1>Tema tid
 function vocab(t){return `<div class="section-head"><div><h2>Belajar kosakata lewat gambar.</h2><p>Amati ilustrasinya, baca kosakata Arab, dengarkan contoh pelafalan, lalu tandai yang sudah kamu pahami.</p></div><span class="count-chip">${t.words.length} kata bergambar</span></div><div class="vocab-grid">${t.words.map((w,i)=>{const done=progress.learned.includes(`${t.id}:${i}`);return `<article class="vocab-card"><div class="vocab-illustration"><img src="${esc(w[3])}" alt="Ilustrasi ${esc(w[2])}" loading="lazy" width="220" height="155"></div>${arab(w[0])}<i>${esc(w[1])}</i><strong>${esc(w[2])}</strong><div class="vocab-actions"><button class="audio" data-speak="${i}" aria-label="Dengarkan ${esc(w[2])}">🔊 Dengarkan</button><button class="mark ${done?'marked':''}" data-learn="${i}" aria-pressed="${done}">${done?'✓ Dipelajari':'+ Tandai'}</button></div></article>`}).join('')}</div><p class="note">Gambar membantu menghubungkan kata dengan benda atau aktivitas. Pelafalan otomatis memerlukan suara bahasa Arab pada perangkat.</p><button class="btn dark" data-next="flashcard">Latihan flashcard →</button>`}
 function flash(t){const w=t.words[card];return `<div class="center"><div class="eyebrow">KARTU ${card+1} DARI ${t.words.length}</div><h2>Masih ingat artinya?</h2><p>Lihat gambar dan kata Arab, lalu balik kartunya untuk memeriksa jawaban.</p><button class="flash ${flipped?'flipped':''}" id="flip" aria-label="${flipped?'Tampilkan kata Arab':'Tampilkan arti'}"><img class="flash-illustration" src="${esc(w[3])}" alt="Ilustrasi ${esc(w[2])}" width="160" height="112">${flipped?`<strong>${esc(w[2])}</strong><i>${esc(w[1])}</i>`:arab(w[0])}<small>↻ Klik untuk membalik</small></button><div class="flash-controls"><button class="btn" id="prev-card">← Sebelumnya</button><span>${card+1} / ${t.words.length}</span><button class="btn" id="next-card">Berikutnya →</button></div><button class="btn dark" data-next="dialog">Coba percakapan →</button></div>`}
 function dialog(t){const done=step>=t.dialog.length;
-return `<div class="dialog-layout" style="--scene:url('${esc(t.scene)}')"><div class="scene-view ${t.color}" role="img" aria-label="Suasana ${esc(t.place)}"><div class="scene-chips"><span>${t.icon} ${esc(t.place)}</span><span>Lawan bicara: ${esc(t.role)}</span></div><div class="scene-title">${arab(t.arabic)}</div><div class="badge">Giliran ${Math.min(step+1,t.dialog.length)} dari ${t.dialog.length}</div></div><div class="dialog-workspace"><div class="dialog-topline"><div><h2>Berani bercakap bahasa Arab?</h2><p>Jawaban berasal dari ketikan atau suara siswa, bukan pilihan ganda.</p></div><span class="count-chip">${Math.min(step+1,t.dialog.length)} / ${t.dialog.length}</span></div><div class="dialog-progress"><span style="width:${100*step/t.dialog.length}%"></span></div><div class="chat" id="chat-log" role="log" aria-label="Riwayat percakapan">${chat.map(x=>`<div class="bubble ${x.me?'me':''}"><div class="bubble-label">${x.me?'🧑‍🎓 Siswa':'💬 Teman bicara'}</div>${x.ar?arab(x.ar):''}${x.audio?`<audio controls preload="metadata" src="${esc(x.audio)}" aria-label="Rekaman suara siswa"></audio>`:''}<small>${esc(x.id)}</small></div>`).join('')}${!done?`<div class="bubble"><div class="bubble-label">💬 ${esc(t.role)}</div>${arab(t.dialog[step][0])}<small>${esc(t.dialog[step][1])}</small></div>`:'<div class="complete">✦ Percakapan selesai! Kamu telah berlatih merespons '+t.dialog.length+' kali. Jawabanmu merupakan latihan terbuka yang belum dinilai otomatis.</div>'}</div>${done?'<div class="dialog-end"><button class="btn dark" data-next="kuis">Lanjut ke kuis →</button><button class="btn" id="restart-dialog">Ulang percakapan</button></div>':`<div class="response-composer"><label for="dialog-input">Ketik jawabanmu dalam bahasa Arab</label><textarea id="dialog-input" lang="ar" dir="rtl" maxlength="400" rows="3" placeholder="اُكْتُبْ جَوَابَكَ هُنَا...">${esc(draft)}</textarea><div class="microphone-tools"><button class="btn voice-button ${isRecording?'recording':''}" id="${isRecording?'stop-recording':'start-recording'}" type="button">${isRecording?'⏹ Hentikan rekaman':'🎙 Rekam suara siswa'}</button>${typeof window!=='undefined'&&(window.SpeechRecognition||window.webkitSpeechRecognition)?`<button class="btn" id="${isRecognizing?'stop-dictation':'start-dictation'}" type="button">${isRecognizing?'⏹ Selesai dikte':'🗣 Ucapan → teks'}</button>`:''}</div>${isRecording?'<p class="recording-indicator"><span></span> Sedang merekam suara. Tekan Hentikan rekaman jika sudah selesai.</p>':''}${recordedUrl?`<div class="recording-preview"><strong>Pratinjau rekaman siswa</strong><audio controls preload="metadata" src="${esc(recordedUrl)}" aria-label="Pratinjau rekaman siswa"></audio><button class="clear-audio" id="discard-recording">Hapus rekaman</button></div>`:''}<details class="dialog-examples"><summary>Lihat contoh jawaban bahasa Arab</summary>${t.dialog[step][2].map(c=>`<div>${arab(c[0])}<small>${esc(c[1])}</small></div>`).join('')}</details><div class="send-row"><span>Kirim ketikan, rekaman, atau keduanya.</span><button class="btn dark" id="send-reply" ${isRecording?'disabled':''}>Kirim jawaban ↗</button></div><p class="privacy-note">Rekaman tersimpan sementara di halaman ini dan tidak diunggah oleh aplikasi. Mikrofon memerlukan izin serta HTTPS atau localhost. Fitur dikte, jika tersedia, memakai layanan pengenalan suara dari browser.</p></div>`}</div></div>`}
+return `<div class="dialog-layout" style="--scene:url('${esc(t.scene)}')"><div class="scene-view ${t.color}" role="img" aria-label="Suasana ${esc(t.place)}"><div class="scene-chips"><span>${t.icon} ${esc(t.place)}</span><span>Lawan bicara: ${esc(t.role)}</span></div><div class="scene-title">${arab(t.arabic)}</div><div class="badge">Giliran ${Math.min(step+1,t.dialog.length)} dari ${t.dialog.length}</div></div><div class="dialog-workspace"><div class="dialog-topline"><div><h2>Berani bercakap bahasa Arab?</h2><p>Jawaban berasal dari ketikan atau suara siswa, bukan pilihan ganda.</p></div><span class="count-chip">${Math.min(step+1,t.dialog.length)} / ${t.dialog.length}</span></div><div class="dialog-progress"><span style="width:${100*step/t.dialog.length}%"></span></div><div class="chat" id="chat-log" role="log" aria-label="Riwayat percakapan">${chat.map(x=>`<div class="bubble ${x.me?'me':''}"><div class="bubble-label">${x.me?'🧑‍🎓 Siswa':'💬 Teman bicara'}</div>${x.ar?arab(x.ar):''}${x.audio?`<audio controls preload="metadata" src="${esc(x.audio)}" aria-label="Rekaman suara siswa"></audio>`:''}<small>${esc(x.id)}</small></div>`).join('')}${!done?`<div class="bubble"><div class="bubble-label">💬 ${esc(t.role)}</div>${arab(t.dialog[step][0])}<small>${esc(t.dialog[step][1])}</small></div>`:'<div class="complete">✦ Percakapan selesai! Kamu telah berlatih merespons enam kali. Jawabanmu merupakan latihan terbuka yang belum dinilai otomatis.</div>'}</div>${done?'<div class="dialog-end"><button class="btn dark" data-next="kuis">Lanjut ke kuis →</button><button class="btn" id="restart-dialog">Ulang percakapan</button></div>':`<div class="response-composer"><label for="dialog-input">Ketik jawabanmu dalam bahasa Arab</label><textarea id="dialog-input" lang="ar" dir="rtl" maxlength="400" rows="3" placeholder="اُكْتُبْ جَوَابَكَ هُنَا...">${esc(draft)}</textarea><div class="microphone-tools"><button class="btn voice-button ${isRecording?'recording':''}" id="${isRecording?'stop-recording':'start-recording'}" type="button">${isRecording?'⏹ Hentikan rekaman':'🎙 Rekam suara siswa'}</button>${typeof window!=='undefined'&&(window.SpeechRecognition||window.webkitSpeechRecognition)?`<button class="btn" id="${isRecognizing?'stop-dictation':'start-dictation'}" type="button">${isRecognizing?'⏹ Selesai dikte':'🗣 Ucapan → teks'}</button>`:''}</div>${isRecording?'<p class="recording-indicator"><span></span> Sedang merekam suara. Tekan Hentikan rekaman jika sudah selesai.</p>':''}${recordedUrl?`<div class="recording-preview"><strong>Pratinjau rekaman siswa</strong><audio controls preload="metadata" src="${esc(recordedUrl)}" aria-label="Pratinjau rekaman siswa"></audio><button class="clear-audio" id="discard-recording">Hapus rekaman</button></div>`:''}<details class="dialog-examples"><summary>Lihat contoh jawaban bahasa Arab</summary>${t.dialog[step][2].map(c=>`<div>${arab(c[0])}<small>${esc(c[1])}</small></div>`).join('')}</details><div class="send-row"><span>Kirim ketikan, rekaman, atau keduanya.</span><button class="btn dark" id="send-reply" ${isRecording?'disabled':''}>Kirim jawaban ↗</button></div><p class="privacy-note">Rekaman tersimpan sementara di halaman ini dan tidak diunggah oleh aplikasi. Mikrofon memerlukan izin serta HTTPS atau localhost. Fitur dikte, jika tersedia, memakai layanan pengenalan suara dari browser.</p></div>`}</div></div>`}
 function quiz(t){const qs=questions(t),score=Math.round(qs.filter(q=>answers[q.id]===q.answer).length/qs.length*100);return `<div class="section-head"><div><h2>${submitted?'Hasil belajarmu.':'Saatnya mencoba sendiri.'}</h2><p>${submitted?'Periksa pembahasannya dan ulangi kata yang belum dikuasai.':'Pilih arti yang sesuai untuk setiap kata. Tidak perlu terburu-buru.'}</p></div>${submitted?`<div class="score">${score}<small>/100</small></div>`:''}</div>${qs.map((q,i)=>`<article class="question"><div><span class="q-num">${i+1}</span> Apa arti ${arab(q.arabic)}?</div><div class="options">${q.options.map(o=>`<button data-question="${q.id}" data-answer="${esc(o)}" ${submitted?'disabled':''} class="${answers[q.id]===o?'selected ':''}${submitted&&o===q.answer?'correct ':''}${submitted&&answers[q.id]===o&&o!==q.answer?'wrong':''}" aria-pressed="${answers[q.id]===o}">${o}</button>`).join('')}</div>${submitted?`<p class="explanation">${answers[q.id]===q.answer?'✓ Benar.':'↻ Mari diingat kembali.'} ${q.explanation}</p>`:''}</article>`).join('')}<div class="actions">${submitted?'<button class="btn dark" id="retry-quiz">Ulangi kuis</button><a class="btn" href="#progres">Lihat progres →</a>':`<button class="btn dark" id="submit-quiz" ${Object.keys(answers).length<qs.length?'disabled':''}>Periksa jawaban (${Object.keys(answers).length}/${qs.length})</button>`}</div>`}
-function dashboard(){const avg=progress.attempts.length?Math.round(progress.attempts.reduce((s,a)=>s+a.score,0)/progress.attempts.length):0;return `<div class="eyebrow">SETIAP LANGKAH LAYAK DIRAYAKAN</div><h1 class="page-title">Perjalanan belajarmu.</h1><p class="intro">Progres tersimpan di browser ini. Ekspor cadangan agar perjalananmu tetap terjaga.</p><section class="stats"><div><div><strong>${progress.learned.length} / ${themes.reduce((n,t)=>n+t.words.length,0)}</strong><small>Kosakata dipelajari</small></div></div><div><div><strong>${progress.dialogs.length} / ${themes.length}</strong><small>Simulasi selesai</small></div></div><div><div><strong>${avg}</strong><small>Rata-rata nilai kuis</small></div></div></section><div class="grid">${themes.map(themeCard).join('')}</div><h2 class="history-title">Riwayat kuis</h2>${progress.attempts.length?`<div class="history">${[...progress.attempts].reverse().map(a=>`<div><span>${esc(themes.find(t=>t.id===a.theme)?.title||'Tema')}<small>${new Date(a.date).toLocaleString('id-ID')}</small></span><strong>${a.score}<small>/100</small></strong></div>`).join('')}</div>`:'<p class="empty">Belum ada kuis yang diselesaikan. Pilih tema untuk mulai belajar.</p>'}<div class="actions"><button class="btn dark" id="export">↓ Ekspor progres</button><label class="btn file-label">↑ Impor progres<input type="file" id="import" accept="application/json,.json"></label><button class="btn danger" id="reset">Hapus progres</button></div><p class="note">Progres tidak tersinkron antarperangkat dan dapat hilang ketika data browser dibersihkan. Nilai ditujukan untuk latihan mandiri.</p>`}
+function dashboard(){const avg=progress.attempts.length?Math.round(progress.attempts.reduce((s,a)=>s+a.score,0)/progress.attempts.length):0;return `<div class="eyebrow">SETIAP LANGKAH LAYAK DIRAYAKAN</div><h1 class="page-title">Perjalanan belajarmu.</h1><p class="intro">Progres tersimpan di browser ini. Ekspor cadangan agar perjalananmu tetap terjaga.</p>${studentPanel()}<section class="stats"><div><div><strong>${progress.learned.length} / ${themes.reduce((n,t)=>n+t.words.length,0)}</strong><small>Kosakata dipelajari</small></div></div><div><div><strong>${progress.dialogs.length} / ${themes.length}</strong><small>Simulasi selesai</small></div></div><div><div><strong>${avg}</strong><small>Rata-rata nilai kuis</small></div></div></section><div class="grid">${themes.map(themeCard).join('')}</div><h2 class="history-title">Riwayat kuis</h2>${progress.attempts.length?`<div class="history">${[...progress.attempts].reverse().map(a=>`<div><span>${esc(themes.find(t=>t.id===a.theme)?.title||'Tema')}<small>${new Date(a.date).toLocaleString('id-ID')}</small></span><strong>${a.score}<small>/100</small></strong></div>`).join('')}</div>`:'<p class="empty">Belum ada kuis yang diselesaikan. Pilih tema untuk mulai belajar.</p>'}<div class="actions"><button class="btn dark" id="export">↓ Ekspor progres (untuk guru)</button><label class="btn file-label">↑ Impor progres<input type="file" id="import" accept="application/json,.json"></label><button class="btn danger" id="reset">Hapus progres</button></div><p class="note">Progres tidak tersinkron antarperangkat dan dapat hilang ketika data browser dibersihkan. Nilai ditujukan untuk latihan mandiri.</p>`}
+const total=themes.reduce((n,t)=>n+t.words.length,0),clean=p=>({name:String(p&&p.name||'').trim().slice(0,60),kelas:String(p&&p.kelas||'').trim().slice(0,30),absen:(n=>Number.isInteger(n)&&n>=1&&n<=99?n:null)(Number(p&&p.absen))});
+function saveRoster(){try{localStorage.setItem('arabicmate:guru:v1',JSON.stringify(roster))}catch{toast('Data murid tidak dapat disimpan di browser ini.')}}
+function stat(p){
+  const per={};for(const t of themes){const sc=p.attempts.filter(a=>a.theme===t.id).map(a=>a.score);per[t.id]={n:p.learned.filter(x=>x.startsWith(t.id+':')).length,d:p.dialogs.includes(t.id),b:sc.length?Math.max(...sc):null}}
+  const bs=Object.values(per).map(x=>x.b).filter(x=>x!==null),avg=bs.length?Math.round(bs.reduce((a,b)=>a+b,0)/bs.length):null,n=p.learned.length,pct=Math.round(n/total*100);
+  const status=!n&&avg===null?'Belum mulai':avg!==null&&avg<60?'Perlu perhatian':pct>=50&&avg>=75?'Baik':'Berjalan';
+  const dates=p.attempts.map(a=>Date.parse(a.date)).concat(Date.parse(p.exportedAt)||[]).filter(Number.isFinite);
+  return {per,avg,n,pct,status,d:p.dialogs.length,last:dates.length?Math.max(...dates):null}
+}
+function valid(v){const ids=new Set(themes.map(t=>t.id)),words=new Set(themes.flatMap(t=>t.words.map((_,i)=>`${t.id}:${i}`)));return !!v&&[1,2].includes(v.version)&&Array.isArray(v.learned)&&v.learned.every(x=>words.has(x))&&Array.isArray(v.dialogs)&&v.dialogs.every(x=>ids.has(x))&&Array.isArray(v.attempts)&&v.attempts.every(a=>a&&ids.has(a.theme)&&Number.isFinite(a.score)&&a.score>=0&&a.score<=100&&Number.isFinite(Date.parse(a.date)))}
+function nextStep(){const s=stat(progress);for(const t of themes){const x=s.per[t.id];if(x.n<t.words.length)return [t,`Lanjutkan kosakata tema ${t.title} (${x.n}/${t.words.length} kata).`];if(!x.d)return [t,`Coba percakapan tema ${t.title}.`];if(x.b===null||x.b<70)return [t,x.b===null?`Ikuti kuis tema ${t.title}.`:`Ulangi kuis tema ${t.title}. Nilai terbaikmu ${x.b}.`]}return null}
+function studentPanel(){const n=nextStep(),p=progress.profile;return `<section class="panel"><div class="form-row"><label>Nama<input id="p-name" maxlength="60" value="${esc(p.name)}" placeholder="Nama lengkap"></label><label>Kelas · No. absen<input value="${esc(p.kelas)} · ${p.absen??'–'}" disabled></label></div><p class="note">Nama dan kelas ikut tersimpan di berkas ekspor agar guru bisa mengenali progresmu. Tidak ada yang dikirim otomatis.</p></section><section class="panel next"><small>LANGKAH BERIKUTNYA</small>${n?`<p>${esc(n[1])}</p><a class="btn dark" href="#belajar/${n[0].id}">Buka tema →</a>`:'<p>Semua tema sudah selesai dengan nilai baik. Ulangi kuis kapan saja untuk menjaga ingatan.</p>'}</section>`}
+async function importRoster(e){
+  let ok=0,bad=0;
+  for(const f of [...e.target.files].slice(0,200)){
+    try{if(f.size>1e6)throw Error();const v=JSON.parse(await f.text());if(!valid(v))throw Error();
+      const p=clean(v.profile);if(!p.name)p.name=f.name.replace(/\.json$/i,'').slice(0,60);
+      const rec={...p,exportedAt:typeof v.exportedAt==='string'?v.exportedAt:'',learned:[...new Set(v.learned)],dialogs:[...new Set(v.dialogs)],attempts:v.attempts.map(a=>({theme:a.theme,score:a.score,date:a.date}))};
+      const k=x=>(x.absen?x.kelas+'|#'+x.absen:x.kelas+'|'+x.name).toLowerCase(),i=roster.findIndex(r=>k(r)===k(rec));
+      if(i<0)roster.push(rec);else roster[i]=rec;ok++}catch{bad++}}
+  saveRoster();render();toast(`${ok} berkas diimpor${bad?`, ${bad} dilewati (tidak valid)`:''}.`)
+}
+function exportCsv(){const q=v=>{v=String(v);if(/^[=+\-@\t\r]/.test(v))v="'"+v;return `"${v.replace(/"/g,'""')}"`},head=['No. absen','Nama','Kelas','Kosakata dipelajari','Persen kosakata','Dialog selesai','Rata-rata kuis','Status',...themes.map(t=>'Kuis '+t.title)],body=roster.slice().sort(cmp).map(r=>{const s=stat(r);return [r.absen??'',r.name,r.kelas,s.n,s.pct,s.d,s.avg??'',s.status,...themes.map(t=>s.per[t.id].b??'')]});const url=URL.createObjectURL(new Blob(['\ufeff'+[head,...body].map(r=>r.map(q).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='arabicmate-kelas.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function teacher(){
+  const all=roster.map((r,i)=>({r,i,s:stat(r)})),kl=[...new Set(all.map(x=>x.r.kelas))].sort((a,b)=>a.localeCompare(b,'id'));
+  if(kfilter!=='semua'&&!kl.includes(kfilter))kfilter='semua';
+  const rows=all.filter(x=>kfilter==='semua'||x.r.kelas===kfilter).sort((a,b)=>cmp(a.r,b.r)),N=rows.length,all0=all.length,sc=rows.filter(x=>x.s.avg!==null),avg=sc.length?Math.round(sc.reduce((a,x)=>a+x.s.avg,0)/sc.length):'–',dl=rows.reduce((a,x)=>a+x.s.d,0);
+  const head=`<div class="eyebrow">MEMANTAU KELAS</div><h1 class="page-title">Ruang guru.</h1><p class="intro">Impor berkas progres (.json) dari murid untuk melihat gambaran kelas. Data hanya disimpan di browser ini.</p><div class="actions"><label class="btn dark file-label">↑ Impor berkas murid<input type="file" id="roster-file" accept="application/json,.json" multiple></label>${all0?'<button class="btn" id="roster-csv">↓ Unduh CSV</button><button class="btn danger" id="roster-clear">Hapus data murid</button>':''}${kl.length>1?`<select id="kls" aria-label="Filter kelas"><option value="semua">Semua kelas</option>${kl.map(k=>`<option value="${esc(k)}" ${k===kfilter?'selected':''}>${k?'Kelas '+esc(k):'Tanpa kelas'}</option>`).join('')}</select>`:''}</div>`;
+  if(!all0)return head+'<section class="panel"><h2>Cara memakai</h2><ol class="how"><li>Murid masuk dengan kelas dan nomor absen, lalu mengisi nama di halaman <b>Progres belajar</b>.</li><li>Murid menekan <b>Ekspor progres</b>, lalu mengirim berkas .json lewat WhatsApp, email, atau LMS.</li><li>Pilih banyak berkas sekaligus lewat tombol impor di atas.</li></ol></section>';
+  return head+`<section class="stats"><div><div><strong>${N}</strong><small>Murid ditampilkan</small></div></div><div><div><strong>${N?Math.round(rows.reduce((a,x)=>a+x.s.pct,0)/N):0}%</strong><small>Rata-rata kosakata dipelajari</small></div></div><div><div><strong>${avg}</strong><small>Rata-rata kuis (terbaik per tema)</small></div></div></section><h2 class="history-title">Per tema</h2><div class="table-wrap"><table><thead><tr><th>Tema</th><th>Kosakata</th><th>Dialog selesai</th><th>Rata-rata kuis</th></tr></thead><tbody>${themes.map(t=>{const xs=rows.map(x=>x.s.per[t.id]),q=xs.filter(x=>x.b!==null);return `<tr><td>${t.icon} ${esc(t.title)}</td><td>${N?Math.round(xs.reduce((a,x)=>a+x.n,0)/N/t.words.length*100):0}%</td><td>${xs.filter(x=>x.d).length}/${N}</td><td>${q.length?Math.round(q.reduce((a,x)=>a+x.b,0)/q.length):'–'}</td></tr>`}).join('')}</tbody></table></div><h2 class="history-title">Daftar murid</h2><div class="table-wrap"><table><thead><tr><th>No.</th><th>Murid</th><th>Kelas</th><th>Kosakata</th><th>Dialog</th><th>Kuis</th><th>Terakhir</th><th>Status</th>${themes.map(t=>`<th title="Kuis terbaik: ${esc(t.title)}">${t.icon}</th>`).join('')}<th></th></tr></thead><tbody>${rows.map(({r,i,s})=>`<tr><td>${r.absen??'–'}</td><td>${esc(r.name)||'–'}</td><td>${esc(r.kelas)||'–'}</td><td><span class="mini"><span style="width:${s.pct}%"></span></span>${s.n}/${total}</td><td>${s.d}/${themes.length}</td><td>${s.avg??'–'}</td><td>${s.last?new Date(s.last).toLocaleDateString('id-ID'):'–'}</td><td><span class="chip ${{'Perlu perhatian':'warn',Baik:'ok'}[s.status]||''}">${s.status}</span></td>${themes.map(t=>`<td>${s.per[t.id].b??'–'}</td>`).join('')}<td><button class="x" data-rm="${i}" aria-label="Hapus ${esc(r.name||'murid')}">✕</button></td></tr>`).join('')}</tbody></table></div><p class="note">Urut menurut nomor absen. Kolom ikon tema = nilai kuis terbaik. Status: <b>Perlu perhatian</b> bila rata-rata kuis di bawah 60; <b>Baik</b> bila kosakata ≥ 50% dan kuis ≥ 75. ${dl} penyelesaian dialog tercatat, tetapi ketikan dan rekaman murid tidak ikut tersimpan di berkas progres dan tidak dinilai otomatis, jadi dialog perlu dinilai langsung.</p>`
+}
+let gateTab='murid',kfilter='semua';
+const cmp=(a,b)=>a.kelas.localeCompare(b.kelas,'id')||(a.absen??999)-(b.absen??999)||a.name.localeCompare(b.name,'id'),own=p=>session?.role==='murid'?{...p,kelas:session.kelas,absen:session.absen}:p;
+const H=t=>{let a=3735928559,b=1103547991;for(const c of 'am:'+t){a=Math.imul(a^c.charCodeAt(0),2654435761);b=Math.imul(b^c.charCodeAt(0),1597334677)}return (a>>>0).toString(16)+(b>>>0).toString(16)},getPin=()=>{try{return localStorage.getItem('arabicmate:guru:pin')}catch{return null}};
+function gate(){const pin=getPin();return `<div class="gate"><div class="gate-card"><div class="brand"><span class="brand-icon">ع</span><span>arabic<span class="light">mate</span></span></div><h1>Masuk dulu, ya.</h1><div class="tabs" role="tablist"><button role="tab" aria-selected="${gateTab==='murid'}" data-gate="murid">Saya murid</button><button role="tab" aria-selected="${gateTab==='guru'}" data-gate="guru">Saya guru</button></div>${gateTab==='murid'?'<form id="f-murid"><label>Kelas<input name="kelas" maxlength="12" placeholder="mis. 7A" required autocomplete="off"></label><label>Nomor absen<input name="absen" type="number" min="1" max="99" inputmode="numeric" required></label><label>Nama (opsional)<input name="nama" maxlength="60" autocomplete="off"></label><button class="btn dark">Masuk dashboard →</button></form><p class="note">Progres tersimpan di perangkat ini sesuai kelas dan nomor absen, jadi satu komputer bisa dipakai bergantian.</p>':`<form id="f-guru"><label>${pin?'PIN guru':'Buat PIN guru (4–8 angka)'}<input name="pin" type="password" inputmode="numeric" pattern="[0-9]{4,8}" maxlength="8" required autocomplete="off"></label>${pin?'':'<label>Ulangi PIN<input name="pin2" type="password" inputmode="numeric" pattern="[0-9]{4,8}" maxlength="8" required autocomplete="off"></label>'}<button class="btn dark">${pin?'Masuk':'Simpan PIN dan masuk'} →</button>${pin?'<button type="button" class="text-link" id="pin-reset">Lupa PIN?</button>':''}</form><p class="note">PIN hanya mengunci Ruang guru di browser ini. Ini bukan keamanan tingkat server.</p>`}</div></div>`}
+function gateRender(){
+  $('#app').innerHTML=gate();
+  document.querySelectorAll('[data-gate]').forEach(b=>b.onclick=()=>{gateTab=b.dataset.gate;gateRender()});
+  const fm=$('#f-murid');if(fm)fm.onsubmit=e=>{e.preventDefault();const f=new FormData(fm),kelas=String(f.get('kelas')).trim(),absen=Number(f.get('absen'));if(!/^[A-Za-z0-9 _-]{1,12}$/.test(kelas)||!Number.isInteger(absen)||absen<1||absen>99){toast('Isi kelas (huruf atau angka) dan nomor absen 1–99.');return}setSession({role:'murid',kelas,absen,nama:String(f.get('nama')).trim().slice(0,60)});current='';go('beranda');render()};
+  const fg=$('#f-guru');if(fg)fg.onsubmit=e=>{e.preventDefault();const f=new FormData(fg),pin=String(f.get('pin')),ex=getPin();
+    if(ex){if(H(pin)!==ex){toast('PIN salah.');return}}else{if(!/^\d{4,8}$/.test(pin)||pin!==String(f.get('pin2'))){toast('PIN harus 4–8 angka dan sama di kedua kolom.');return}try{localStorage.setItem('arabicmate:guru:pin',H(pin))}catch{toast('PIN tidak dapat disimpan di browser ini.');return}}
+    setSession({role:'guru'});go('guru');render()};
+  if($('#pin-reset'))$('#pin-reset').onclick=()=>{if(confirm('Setel ulang PIN? Data murid yang sudah diimpor di browser ini ikut dihapus.')){try{localStorage.removeItem('arabicmate:guru:pin');localStorage.removeItem('arabicmate:guru:v1')}catch{}roster=[];gateRender()}}
+}
 function about(){return `<div class="eyebrow">TEMAN BELAJARMU</div><h1 class="page-title">Tentang Arabic Mate.</h1><article class="about"><h2>Belajar dari kehidupan sehari-hari.</h2><p>Arabic Mate adalah media latihan bahasa Arab fusha tingkat pemula. Pelajari kosakata, ingat kembali melalui flashcard, coba simulasi percakapan, lalu evaluasi pemahaman melalui kuis.</p><h2>Ruang latihan mandiri</h2><p>Versi ini berjalan tanpa akun dan database. Percakapan terdiri atas enam giliran per tema. Siswa dapat mengetik dan merekam suara tanpa penilaian otomatis dan tanpa mengunggah rekaman. Dikte memakai layanan pengenalan suara browser jika tersedia. Audio contoh bergantung pada ketersediaan suara bahasa Arab di perangkat. Contoh dialog menggunakan bentuk sapaan maskulin tunggal pada beberapa kalimat.</p><h2>Data dan privasi</h2><p>Progres disimpan secara lokal pada browser. Aplikasi tidak mengirim progres ke server. Tombol impor dan ekspor memungkinkan pemindahan cadangan secara manual. Penyedia hosting tetap dapat mencatat akses website sesuai kebijakannya.</p><h2>Pengembangan selanjutnya</h2><p>Integrasi akun, penyimpanan lintas perangkat, pengelolaan materi, serta AI memerlukan backend dan konfigurasi layanan tersendiri. Materi awal perlu ditinjau pengajar bahasa Arab sebelum digunakan sebagai kurikulum formal.</p><a class="btn dark" href="#tema">Jelajahi tema →</a></article>`}
 async function beginRecording(){
   if(isRecording)return;
@@ -2347,9 +1335,16 @@ function bind(){
   document.querySelectorAll('[data-question]').forEach(b=>b.onclick=()=>{answers[b.dataset.question]=b.dataset.answer;const y=scrollY;render();scrollTo(0,y)});
   if($('#submit-quiz'))$('#submit-quiz').onclick=()=>{const qs=questions(t);if(Object.keys(answers).length!==qs.length)return;submitted=true;progress.attempts.push({theme:t.id,score:Math.round(qs.filter(q=>answers[q.id]===q.answer).length/qs.length*100),date:new Date().toISOString()});save();render();$('.lesson-content').scrollIntoView({behavior:'smooth'})};
   if($('#retry-quiz'))$('#retry-quiz').onclick=()=>{answers={};submitted=false;render()};
-  if($('#export'))$('#export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({version:1,...progress},null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='arabicmate-progres.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
-  if($('#reset'))$('#reset').onclick=()=>{if(confirm('Hapus semua progres pada browser ini? Ekspor cadangan terlebih dahulu jika diperlukan.')){progress={learned:[],dialogs:[],attempts:[]};save();render();toast('Progres telah dihapus.')}};
-  if($('#import'))$('#import').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>1000000)throw Error();const v=JSON.parse(await f.text());const ids=new Set(themes.map(t=>t.id)),words=new Set(themes.flatMap(t=>t.words.map((_,i)=>`${t.id}:${i}`)));if(v.version!==1||!Array.isArray(v.learned)||!v.learned.every(x=>words.has(x))||!Array.isArray(v.dialogs)||!v.dialogs.every(x=>ids.has(x))||!Array.isArray(v.attempts)||!v.attempts.every(a=>ids.has(a.theme)&&Number.isFinite(a.score)&&a.score>=0&&a.score<=100&&typeof a.date==='string'&&Number.isFinite(Date.parse(a.date))))throw Error();if(!confirm('Ganti progres saat ini dengan progres dari file cadangan?'))return;progress={learned:[...new Set(v.learned)],dialogs:[...new Set(v.dialogs)],attempts:v.attempts.map(a=>({theme:a.theme,score:a.score,date:a.date}))};save();render();toast('Progres berhasil diimpor.')}catch{toast('File progres tidak valid. Gunakan file ekspor Arabic Mate.')}};
+  if($('#export'))$('#export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),...progress},null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='arabicmate-progres.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+  if($('#reset'))$('#reset').onclick=()=>{if(confirm('Hapus semua progres pada browser ini? Ekspor cadangan terlebih dahulu jika diperlukan.')){progress={learned:[],dialogs:[],attempts:[],profile:progress.profile};save();render();toast('Progres telah dihapus.')}};
+  if($('#import'))$('#import').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>1000000)throw Error();const v=JSON.parse(await f.text());const ids=new Set(themes.map(t=>t.id)),words=new Set(themes.flatMap(t=>t.words.map((_,i)=>`${t.id}:${i}`)));if(![1,2].includes(v.version)||!Array.isArray(v.learned)||!v.learned.every(x=>words.has(x))||!Array.isArray(v.dialogs)||!v.dialogs.every(x=>ids.has(x))||!Array.isArray(v.attempts)||!v.attempts.every(a=>ids.has(a.theme)&&Number.isFinite(a.score)&&a.score>=0&&a.score<=100&&typeof a.date==='string'&&Number.isFinite(Date.parse(a.date))))throw Error();if(session?.role==='murid'&&v.profile&&v.profile.absen&&(Number(v.profile.absen)!==session.absen||String(v.profile.kelas||'').toLowerCase()!==session.kelas.toLowerCase())){toast('Berkas ini milik murid lain.');return}if(!confirm('Ganti progres saat ini dengan progres dari file cadangan?'))return;progress={learned:[...new Set(v.learned)],dialogs:[...new Set(v.dialogs)],attempts:v.attempts.map(a=>({theme:a.theme,score:a.score,date:a.date})),profile:own(v.profile?clean(v.profile):progress.profile)};save();render();toast('Progres berhasil diimpor.')}catch{toast('File progres tidak valid. Gunakan file ekspor Arabic Mate.')}};
+  if($('#p-name'))$('#p-name').oninput=e=>{progress.profile.name=e.target.value.slice(0,60);save()};
+  if($('#logout'))$('#logout').onclick=()=>{clearConversation();current='';setSession(null);location.hash='';render()};
+  if($('#kls'))$('#kls').onchange=e=>{kfilter=e.target.value;render()};
+  if($('#roster-file'))$('#roster-file').onchange=importRoster;
+  if($('#roster-csv'))$('#roster-csv').onclick=exportCsv;
+  if($('#roster-clear'))$('#roster-clear').onclick=()=>{if(confirm('Hapus semua data murid dari browser ini?')){roster=[];saveRoster();render()}};
+  document.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{roster.splice(+b.dataset.rm,1);saveRoster();render()});
 }
 window.addEventListener('hashchange',()=>{if(isRecording)stopRecording(true);if(isRecognizing)stopDictation();render();scrollTo(0,0)});render();
 </script></body></html>
