@@ -1,5 +1,73 @@
 import {themes,questions} from './data.js';
 const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+document.head.appendChild(Object.assign(document.createElement('style'),{id:'am-dash-css',textContent:`/* ===== Gerbang masuk, dashboard murid, Ruang guru ===== */
+:root{--am-mint:#d3efd9;--am-amber:#ffe6a8;--am-coral:#ffcabd;--am-deep:#487f9b}
+.hero-dash,.t-banner,.gate,.kpi,.tgrid,.howto,.table-wrap,.panel{font-family:'Plus Jakarta Sans',Inter,'Segoe UI',sans-serif}
+.hero-dash{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:36px 44px;border-radius:30px;background:radial-gradient(circle at 90% 15%,#ffd9b8 0,transparent 46%),linear-gradient(120deg,var(--cream),#ffe9cf);margin:6px 0 20px}
+.hero-dash h1{font-size:clamp(34px,4vw,52px);letter-spacing:-1.5px;margin:0 0 10px;line-height:1.05}
+.hd-sub{margin:0 0 22px;max-width:44ch;font-size:15px;color:#555a55}
+.namefield{display:grid;gap:6px;font-size:12px;font-weight:700;max-width:320px}
+.namefield input{border:1px solid #e6dcc4;border-radius:14px;padding:12px 15px;background:rgba(255,255,255,.85);color:var(--ink);font:inherit}
+@property --p{syntax:'<number>';inherits:false;initial-value:0}
+@keyframes fill{from{--p:0}}
+.ring{flex:none;position:relative;width:176px;aspect-ratio:1;border-radius:50%;display:grid;place-content:center;text-align:center;background:conic-gradient(#e08d57 calc(var(--p)*1%),#eadfca 0);animation:fill 1.2s cubic-bezier(.2,.7,.2,1)}
+.ring::before{content:'';position:absolute;inset:16px;border-radius:50%;background:var(--paper)}
+.ring b,.ring small{position:relative}.ring b{font-size:38px;line-height:1;letter-spacing:-1px}.ring small{font-size:12px;color:var(--muted);margin-top:4px}
+.panel.next{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:var(--blue);border-radius:20px;padding:20px 26px;margin:0 0 22px}
+.panel.next strong{font-size:12px;color:#3c6c86}.panel.next p{margin:4px 0 0;font-size:16px;font-weight:700}
+.kpi{gap:16px;margin:0 0 34px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.kpi>div{border:0;border-radius:20px;padding:20px 22px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.kpi>div::before{content:'📚';display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--sand);font-size:22px;flex:none}
+.kpi>div:nth-child(2)::before{content:'💬';background:var(--blue)}.kpi>div:nth-child(3)::before{content:'🏆';background:var(--cream)}
+.kpi.t>div:nth-child(1)::before{content:'🧑‍🎓'}.kpi.t>div:nth-child(2)::before{content:'📚';background:var(--sand)}.kpi>div:nth-child(4)::before{content:'🔔';background:var(--am-coral)}
+.kpi strong{display:block;font-size:30px;line-height:1.1;letter-spacing:-1px}.kpi small{color:var(--muted);font-size:12px}
+.t-banner{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding:32px 36px;border-radius:26px;background:linear-gradient(120deg,var(--blue),#eaf6ff 75%);margin:6px 0 22px}
+.t-banner h1{font-size:clamp(30px,3.4vw,44px);letter-spacing:-1.2px;margin:0 0 6px}.t-banner p{margin:0;max-width:44ch;color:#4d5f68;font-size:14px}.t-banner .actions{margin:0}
+.actions select{border:1px solid #cfe0ea;border-radius:10px;padding:11px 14px;background:#fff;color:var(--ink);font:inherit;font-size:12px;font-weight:650}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-bottom:36px}
+.tcard{background:#fff;border-radius:20px;padding:18px 20px;box-shadow:inset 0 0 0 1px var(--line)}
+.tcard h3{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:15px}.tcard h3 span{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--cream)}
+.bar-row{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:10px;margin:8px 0;font-size:12px}.bar-row small{color:var(--muted);font-size:12px}.bar-row b{text-align:right}
+.bar{height:8px;border-radius:6px;background:#f1ede0;overflow:hidden}.bar i{display:block;height:100%;border-radius:6px;background:#d9996b}.bar.hi i{background:#69b383}.bar.mid i{background:#e8b94d}.bar.lo i{background:#e07b68}
+.tcard p{margin:12px 0 0;font-size:12px;color:var(--muted)}
+.table-wrap{overflow-x:auto;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);margin-bottom:10px}
+.table-wrap table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}
+.table-wrap th{padding:14px;text-align:left;font-size:12px;color:var(--muted);font-weight:700;background:#fbf8ee}
+.table-wrap td{padding:12px 14px;border-top:1px solid #f0ede2;vertical-align:middle}.table-wrap tbody tr:hover{background:#fffcf2}
+.table-wrap td b{display:block}.table-wrap td small{color:var(--muted);font-size:11px}
+.avatar{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--sand);font-weight:800;font-size:13px}
+.mini{display:inline-block;width:70px;height:7px;background:#f1ede0;border-radius:5px;margin-right:9px;vertical-align:middle;overflow:hidden}.mini span{display:block;height:100%;background:#d9996b;border-radius:5px}
+.sc{display:inline-block;min-width:38px;padding:4px 10px;border-radius:10px;text-align:center;font-weight:800;font-size:12px;background:#f4f2ea;color:var(--muted)}
+.sc.hi{background:var(--am-mint);color:#1f5a33}.sc.mid{background:var(--am-amber);color:#6b4b00}.sc.lo{background:var(--am-coral);color:#8a2f1f}.sc small{font-size:10px;font-weight:600;opacity:.7}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:20px;font-size:11px;font-weight:700;background:#f1efe4}
+.chip::before{content:'';width:7px;height:7px;border-radius:50%;background:#b9b6a5}
+.chip.ok{background:var(--am-mint)}.chip.ok::before{background:#3f9a5f}.chip.warn{background:var(--am-coral)}.chip.warn::before{background:#d6523b}.chip.go{background:var(--blue)}.chip.go::before{background:var(--am-deep)}
+.x{border:0;background:none;color:var(--muted);padding:5px 9px;border-radius:8px}.x:hover{background:var(--cream);color:var(--ink)}.device .x{margin-left:10px;border:1px solid var(--line);font-size:11px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:22px}
+.howto>div{background:#fff;border-radius:20px;padding:22px;box-shadow:inset 0 0 0 1px var(--line)}.howto span{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--cream);font-size:22px;margin-bottom:12px}.howto b{display:block;margin-bottom:4px}.howto p{margin:0;font-size:13px;color:var(--muted)}
+.gate{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr}
+.gate-art{position:relative;overflow:hidden;display:grid;align-items:end;padding:56px;background:linear-gradient(160deg,#ffcfa6,#ffe4c4 55%,var(--cream))}
+.g-blob{position:absolute;border-radius:50%}.g-blob.b1{width:420px;height:420px;right:-120px;top:-120px;background:var(--blue);opacity:.75}.g-blob.b2{width:240px;height:240px;left:-70px;top:34%;background:#ffb98a;opacity:.55}
+.g-copy{position:relative}.g-word{display:block;font:700 clamp(56px,8vw,112px)/1.3 'Noto Naskh Arabic',Georgia,serif;margin-bottom:12px}
+.g-copy p{max-width:36ch;font-size:17px;margin:0 0 22px}.g-chips{display:flex;flex-wrap:wrap;gap:8px}.g-chips span{background:rgba(255,255,255,.72);border-radius:30px;padding:7px 14px;font-size:12px;font-weight:700}
+.gate-side{display:grid;place-items:center;padding:32px;background:var(--paper)}.gate-card{width:min(400px,100%)}.gate-card h1{font-size:34px;letter-spacing:-1px;margin:26px 0 18px}
+.gate-card .tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;margin:0 0 22px;border:0;border-radius:16px;background:#f3efe1}
+.gate-card .tabs button{padding:11px 8px;border:0;border-radius:12px;font-weight:700;font-size:13px}.gate-card .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(46,52,52,.12)}
+.gate-card form{display:grid;gap:14px}.gate-card label{display:grid;gap:6px;font-size:12px;font-weight:700}
+.gate-card input{border:1.5px solid var(--line);border-radius:14px;padding:13px 15px;background:#fff;color:var(--ink);font:inherit;font-size:15px}.gate-card input:focus{border-color:var(--am-deep);outline:0;box-shadow:0 0 0 4px rgba(72,127,155,.15)}
+.gate-card .btn.dark{padding:14px;font-size:14px;border-radius:14px;margin-top:4px}.gate-card .note{margin:20px 0 0;color:var(--muted)}
+@media(max-width:860px){.gate{grid-template-columns:1fr}.gate-art{padding:32px 28px;min-height:230px}.g-word{font-size:56px;margin:0}.g-copy p,.g-chips{display:none}}
+@media(max-width:760px){.hero-dash{flex-direction:column-reverse;align-items:flex-start;padding:26px}.ring{width:132px}.t-banner{padding:24px}}
+@media(prefers-reduced-motion:reduce){.ring{animation:none}}
+
+.history strong.sc{font-size:18px;padding:6px 14px}
+.lvl{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;margin-bottom:14px;border-radius:30px;background:rgba(255,255,255,.78);font-size:12px;font-weight:800}
+.duo{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;margin:0 0 22px}.duo .panel.next{margin:0}
+.wotd{display:flex;align-items:center;gap:18px;padding:18px 22px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-family:'Plus Jakarta Sans',Inter,'Segoe UI',sans-serif}
+.wotd img{width:104px;height:auto;border-radius:14px;background:var(--cream);flex:none}.wotd small{color:var(--muted);font-size:11px;font-weight:700}
+.wotd-ar{font:700 34px/1.5 'Noto Naskh Arabic',Georgia,serif}.wotd p{margin:0;font-size:13px}.wotd .btn{margin-left:auto;flex:none}
+@media(max-width:900px){.duo{grid-template-columns:1fr}.wotd{flex-wrap:wrap}}
+`}));
 let key='arabicmate:v1',progress,session=null;
 const okSes=x=>x&&(x.role==='guru'||(x.role==='murid'&&/^[A-Za-z0-9 _-]{1,12}$/.test(x.kelas||'')&&Number.isInteger(x.absen)&&x.absen>=1&&x.absen<=99));
 function loadProgress(){progress={learned:[],dialogs:[],attempts:[]};try{const v=JSON.parse(localStorage.getItem(key));if(v&&Array.isArray(v.learned)&&Array.isArray(v.dialogs)&&Array.isArray(v.attempts))progress=v}catch{}progress.profile=progress.profile&&typeof progress.profile==='object'?progress.profile:{name:'',kelas:''};if(session?.role==='murid'){progress.profile.kelas=session.kelas;progress.profile.absen=session.absen;if(!progress.profile.name)progress.profile.name=session.nama||''}}
@@ -48,7 +116,10 @@ function stat(p){
 }
 function valid(v){const ids=new Set(themes.map(t=>t.id)),words=new Set(themes.flatMap(t=>t.words.map((_,i)=>`${t.id}:${i}`)));return !!v&&[1,2].includes(v.version)&&Array.isArray(v.learned)&&v.learned.every(x=>words.has(x))&&Array.isArray(v.dialogs)&&v.dialogs.every(x=>ids.has(x))&&Array.isArray(v.attempts)&&v.attempts.every(a=>a&&ids.has(a.theme)&&Number.isFinite(a.score)&&a.score>=0&&a.score<=100&&Number.isFinite(Date.parse(a.date)))}
 function nextStep(){const s=stat(progress);for(const t of themes){const x=s.per[t.id];if(x.n<t.words.length)return [t,`Lanjutkan kosakata tema ${t.title} (${x.n}/${t.words.length} kata).`];if(!x.d)return [t,`Coba percakapan tema ${t.title}.`];if(x.b===null||x.b<70)return [t,x.b===null?`Ikuti kuis tema ${t.title}.`:`Ulangi kuis tema ${t.title}. Nilai terbaikmu ${x.b}.`]}return null}
-function studentPanel(){const n=nextStep(),p=progress.profile,s=stat(progress),nm=(p.name||'').trim().split(' ')[0];return `<section class="hero-dash"><div><h1>Ahlan${nm?', '+esc(nm):''}!</h1><p class="hd-sub">Kelas ${esc(p.kelas)}, nomor absen ${p.absen??'–'}. ${s.n?`Sudah ${s.n} dari ${total} kata kamu pelajari.`:'Belum ada kata yang kamu tandai. Mulai dari satu kata saja.'}</p><label class="namefield">Nama di berkas progres<input id="p-name" maxlength="60" value="${esc(p.name)}" placeholder="Tulis namamu"></label></div><div class="ring" style="--p:${s.pct}" role="img" aria-label="${s.pct}% kosakata dipelajari"><b>${s.pct}%</b><small>kosakata</small></div></section><section class="panel next"><div><strong>Langkah berikutnya</strong>${n?`<p>${esc(n[1])}</p>`:'<p>Semua tema sudah selesai dengan nilai baik. Ulangi kuis kapan saja untuk menjaga ingatan.</p>'}</div>${n?`<a class="btn dark" href="#belajar/${n[0].id}">Buka tema ${n[0].icon}</a>`:''}</section>`}
+const lvl=p=>p<20?'🌱 Level Pemula':p<50?'🧭 Level Penjelajah':p<80?'🗣️ Level Pencerita':'🏅 Level Mahir';
+function wotd(){const all=themes.flatMap(t=>t.words.map(w=>({t,w}))),day=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5);return all[day%all.length]}
+function wotdCard(){const {t,w}=wotd();return `<section class="wotd"><img src="${esc(w[3])}" alt="Ilustrasi ${esc(w[2])}" width="104" height="73"><div><small>Kata hari ini · ${t.icon} ${esc(t.title)}</small><div class="wotd-ar" lang="ar" dir="rtl">${esc(w[0])}</div><p><b>${esc(w[1])}</b> berarti ${esc(w[2])}</p></div><button class="btn" id="wotd-say">🔊 Dengarkan</button></section>`}
+function studentPanel(){const n=nextStep(),p=progress.profile,s=stat(progress),nm=(p.name||'').trim().split(' ')[0];return `<section class="hero-dash"><div><span class="lvl">${lvl(s.pct)}</span><h1>Ahlan${nm?', '+esc(nm):''}!</h1><p class="hd-sub">Kelas ${esc(p.kelas)}, nomor absen ${p.absen??'–'}. ${s.n?`Sudah ${s.n} dari ${total} kata kamu pelajari.`:'Belum ada kata yang kamu tandai. Mulai dari satu kata saja.'}</p><label class="namefield">Nama di berkas progres<input id="p-name" maxlength="60" value="${esc(p.name)}" placeholder="Tulis namamu"></label></div><div class="ring" style="--p:${s.pct}" role="img" aria-label="${s.pct}% kosakata dipelajari"><b>${s.pct}%</b><small>kosakata</small></div></section><div class="duo"><section class="panel next"><div><strong>Langkah berikutnya</strong>${n?`<p>${esc(n[1])}</p>`:'<p>Semua tema sudah selesai dengan nilai baik. Ulangi kuis kapan saja untuk menjaga ingatan.</p>'}</div>${n?`<a class="btn dark" href="#belajar/${n[0].id}">Buka tema ${n[0].icon}</a>`:''}</section>${wotdCard()}</div>`}
 async function importRoster(e){
   let ok=0,bad=0;
   for(const f of [...e.target.files].slice(0,200)){
@@ -164,6 +235,7 @@ function bind(){
   if($('#reset'))$('#reset').onclick=()=>{if(confirm('Hapus semua progres pada browser ini? Ekspor cadangan terlebih dahulu jika diperlukan.')){progress={learned:[],dialogs:[],attempts:[],profile:progress.profile};save();render();toast('Progres telah dihapus.')}};
   if($('#import'))$('#import').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>1000000)throw Error();const v=JSON.parse(await f.text());const ids=new Set(themes.map(t=>t.id)),words=new Set(themes.flatMap(t=>t.words.map((_,i)=>`${t.id}:${i}`)));if(![1,2].includes(v.version)||!Array.isArray(v.learned)||!v.learned.every(x=>words.has(x))||!Array.isArray(v.dialogs)||!v.dialogs.every(x=>ids.has(x))||!Array.isArray(v.attempts)||!v.attempts.every(a=>ids.has(a.theme)&&Number.isFinite(a.score)&&a.score>=0&&a.score<=100&&typeof a.date==='string'&&Number.isFinite(Date.parse(a.date))))throw Error();if(session?.role==='murid'&&v.profile&&v.profile.absen&&(Number(v.profile.absen)!==session.absen||String(v.profile.kelas||'').toLowerCase()!==session.kelas.toLowerCase())){toast('Berkas ini milik murid lain.');return}if(!confirm('Ganti progres saat ini dengan progres dari file cadangan?'))return;progress={learned:[...new Set(v.learned)],dialogs:[...new Set(v.dialogs)],attempts:v.attempts.map(a=>({theme:a.theme,score:a.score,date:a.date})),profile:own(v.profile?clean(v.profile):progress.profile)};save();render();toast('Progres berhasil diimpor.')}catch{toast('File progres tidak valid. Gunakan file ekspor Arabic Mate.')}};
   if($('#p-name'))$('#p-name').oninput=e=>{progress.profile.name=e.target.value.slice(0,60);save()};
+  if($('#wotd-say'))$('#wotd-say').onclick=()=>speakArabic(wotd().w[0]);
   if($('#logout'))$('#logout').onclick=()=>{clearConversation();current='';setSession(null);location.hash='';render()};
   if($('#kls'))$('#kls').onchange=e=>{kfilter=e.target.value;render()};
   if($('#roster-file'))$('#roster-file').onchange=importRoster;
